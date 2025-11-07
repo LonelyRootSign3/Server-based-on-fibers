@@ -1,0 +1,2 @@
+/usr/bin/ar qc libhardproject.a CMakeFiles/hardproject.dir/src/Config.cc.o CMakeFiles/hardproject.dir/src/Env.cc.o CMakeFiles/hardproject.dir/src/Fiber.cc.o CMakeFiles/hardproject.dir/src/Log.cc.o CMakeFiles/hardproject.dir/src/Logdefine.cc.o CMakeFiles/hardproject.dir/src/Mutex.cc.o CMakeFiles/hardproject.dir/src/Schedule.cc.o CMakeFiles/hardproject.dir/src/Thread.cc.o CMakeFiles/hardproject.dir/src/Util.cc.o
+/usr/bin/ranlib libhardproject.a

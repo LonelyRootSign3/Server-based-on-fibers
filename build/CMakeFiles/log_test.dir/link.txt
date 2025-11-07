@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/log_test.dir/test/test_Log.cc.o -o /home/dyx/HardProject/bin/log_test  libhardproject.a 

@@ -1,0 +1,20 @@
+# /home/dyx/HardProject/configs/test.yaml
+
+g_int_val:   42
+g_float_val: 2.718
+
+g_vec_val:   [7, 3, 7, 1]   # 只喂给 vector
+g_list_val:   [4, 5, 6, 7]   # 专门喂给 list（验证 list 遍历顺序）
+
+g_set_val:   [5, 5, 2, 9]
+g_uset_val:  [10, 10, 11, 12]
+
+g_map_val:
+  c:  -1
+  a:   0
+  b:  10
+
+g_umap_val:
+  x: 100
+  z: 300
+  y: 200

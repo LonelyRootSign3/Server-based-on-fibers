@@ -1,0 +1,62 @@
+[
+{
+  "directory": "/home/dyx/HardProject/build",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Config.cc.o -c /home/dyx/HardProject/src/Config.cc",
+  "file": "/home/dyx/HardProject/src/Config.cc",
+  "output": "CMakeFiles/hardproject.dir/src/Config.cc.o"
+},
+{
+  "directory": "/home/dyx/HardProject/build",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Env.cc.o -c /home/dyx/HardProject/src/Env.cc",
+  "file": "/home/dyx/HardProject/src/Env.cc",
+  "output": "CMakeFiles/hardproject.dir/src/Env.cc.o"
+},
+{
+  "directory": "/home/dyx/HardProject/build",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Fiber.cc.o -c /home/dyx/HardProject/src/Fiber.cc",
+  "file": "/home/dyx/HardProject/src/Fiber.cc",
+  "output": "CMakeFiles/hardproject.dir/src/Fiber.cc.o"
+},
+{
+  "directory": "/home/dyx/HardProject/build",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Log.cc.o -c /home/dyx/HardProject/src/Log.cc",
+  "file": "/home/dyx/HardProject/src/Log.cc",
+  "output": "CMakeFiles/hardproject.dir/src/Log.cc.o"
+},
+{
+  "directory": "/home/dyx/HardProject/build",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Logdefine.cc.o -c /home/dyx/HardProject/src/Logdefine.cc",
+  "file": "/home/dyx/HardProject/src/Logdefine.cc",
+  "output": "CMakeFiles/hardproject.dir/src/Logdefine.cc.o"
+},
+{
+  "directory": "/home/dyx/HardProject/build",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Mutex.cc.o -c /home/dyx/HardProject/src/Mutex.cc",
+  "file": "/home/dyx/HardProject/src/Mutex.cc",
+  "output": "CMakeFiles/hardproject.dir/src/Mutex.cc.o"
+},
+{
+  "directory": "/home/dyx/HardProject/build",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Schedule.cc.o -c /home/dyx/HardProject/src/Schedule.cc",
+  "file": "/home/dyx/HardProject/src/Schedule.cc",
+  "output": "CMakeFiles/hardproject.dir/src/Schedule.cc.o"
+},
+{
+  "directory": "/home/dyx/HardProject/build",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Thread.cc.o -c /home/dyx/HardProject/src/Thread.cc",
+  "file": "/home/dyx/HardProject/src/Thread.cc",
+  "output": "CMakeFiles/hardproject.dir/src/Thread.cc.o"
+},
+{
+  "directory": "/home/dyx/HardProject/build",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Util.cc.o -c /home/dyx/HardProject/src/Util.cc",
+  "file": "/home/dyx/HardProject/src/Util.cc",
+  "output": "CMakeFiles/hardproject.dir/src/Util.cc.o"
+},
+{
+  "directory": "/home/dyx/HardProject/build",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/schedule_test.dir/tests/test_Schedule.cc.o -c /home/dyx/HardProject/tests/test_Schedule.cc",
+  "file": "/home/dyx/HardProject/tests/test_Schedule.cc",
+  "output": "CMakeFiles/schedule_test.dir/tests/test_Schedule.cc.o"
+}
+]

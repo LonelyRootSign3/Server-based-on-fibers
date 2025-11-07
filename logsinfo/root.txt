@@ -1,0 +1,8 @@
+[2025-10-27 11:30:12] [/home/dyx/HardProject/src/Config.h:292] [DEBUG] [root] - ConfigVar<logs> changed.
+[2025-10-27 11:30:12] [/home/dyx/HardProject/tests/test_Config.cc:173] [INFO] [root] - name= logs
+[2025-10-27 11:30:12] [/home/dyx/HardProject/tests/test_Config.cc:174] [INFO] [root] - description= logs config
+[2025-10-27 11:30:12] [/home/dyx/HardProject/tests/test_Config.cc:175] [INFO] [root] - type= std::set<DYX::LogDefine, std::less<DYX::LogDefine>, std::allocator<DYX::LogDefine> >
+[2025-10-27 11:30:12] [/home/dyx/HardProject/src/Logdefine.h:115] [DEBUG] [root] - log level is DEBUG
+[2025-10-27 11:30:12] [/home/dyx/HardProject/src/Logdefine.h:115] [DEBUG] [root] - log level is INFO
+[2025-10-27 11:30:12] [/home/dyx/HardProject/tests/test_Config.cc:176] [INFO] [root] - value= - "name: root\nlevel: DEBUG\nformatter: \"[%d{%Y-%m-%d %H:%M:%S}] [%f:%l] [%p] [%c] - %m%n\"\nappenders:\n  - type: FileLogAppender\n    file: /home/dyx/HardProject/logsinfo/root.txt\n    level: DEBUG\n  - type: ConsoleLogAppender\n    formatter: \"[%f:%l] [%p] [%c] [%d{%Y-%m-%d %H:%M:%S}] - %m%n\""
+- "name: system\nlevel: INFO\nformatter: \"[%d{%Y-%m-%d %H:%M:%S}] [%f:%l] [%p] [%c] - %m%n\"\nappenders:\n  - type: FileLogAppender\n    file: /home/dyx/HardProject/logsinfo/system.txt\n  - type: ConsoleLogAppender"

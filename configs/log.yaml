@@ -1,0 +1,18 @@
+logs:
+    - name: root
+      level: debug
+      formatter: "[%d{%Y-%m-%d %H:%M:%S}] [%f:%l] [%p] [%c] - %m%n"
+      appenders:
+          - type: FileLogAppender
+            level: debug
+            file: /home/dyx/HardProject/logsinfo/root.txt
+          - type: ConsoleLogAppender
+            formatter: "[%f:%l] [%p] [%c] [%d{%Y-%m-%d %H:%M:%S}] - %m%n"
+    - name: system
+      level: info
+      formatter: "[%d{%Y-%m-%d %H:%M:%S}] [%f:%l] [%p] [%c] - %m%n"
+      appenders:
+          - type: FileLogAppender
+            file: /home/dyx/HardProject/logsinfo/system.txt
+          - type: ConsoleLogAppender
+            
