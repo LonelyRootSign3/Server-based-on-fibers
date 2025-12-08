@@ -1,13 +1,14 @@
 #include "Util.h"
-
+#include <sys/time.h>
+#include <cstring>
 namespace DYX{
-    inline DYX::Logger::Ptr g_logger = GET_NAME_LOGGER("system");//确保全工程以 C++17（或更高）编译；inline 变量允许跨 TU 定义一次“合并”为同一实体。   
+    static DYX::Logger::Ptr g_logger = GET_NAME_LOGGER("system");  
 
     pid_t GetThreadId(){//获取内核级别的线程id
         return syscall(SYS_gettid);
     }
-    uint32_t GetFiberId(){
-        return Fiber::GetFiberId();
+    int GetFiberId(){
+        return Fiber::GetId();
     }
 
     static std::string demangle(const char *str){//去除函数名的编译器修饰
@@ -58,6 +59,32 @@ namespace DYX{
             ss << prefix << bt[i] << std::endl;
         }
         return ss.str();
+    }
+
+    uint64_t GetCurrentMS(){//获取当前时间的毫秒
+        struct timeval tv;
+        gettimeofday(&tv, NULL);
+        return tv.tv_sec * 1000 + tv.tv_usec / 1000;
+    }
+    uint64_t GetCurrentUS(){//获取当前时间的微秒
+        struct timeval tv;
+        gettimeofday(&tv, NULL);
+        return tv.tv_sec * 1000000 + tv.tv_usec;
+    }
+    std::string Time2Str(time_t ts, const std::string& format){
+        struct tm tm;
+        localtime_r(&ts, &tm);
+        char buf[64];
+        strftime(buf, sizeof(buf), format.c_str(), &tm);
+        return buf;
+    }
+    time_t Str2Time(const char* str, const char* format){
+        struct tm t;
+        memset(&t, 0, sizeof(t));
+        if(!strptime(str, format, &t)) {
+            return 0;
+        }
+        return mktime(&t);
     }
 
 }

@@ -92,7 +92,7 @@ namespace DYX {
         uint32_t _line = 0;         //行号
         uint32_t _thread_id  = 0;   //线程ID
         std::string _thread_name; //线程名称
-        uint32_t _fiber_id  = 0;    //协程ID
+        int _fiber_id  = 0;    //协程ID
 
         std::shared_ptr<Logger> _logger; //日志器
         std::stringstream _ss;          //日志内容流

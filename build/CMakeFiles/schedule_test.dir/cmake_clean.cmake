@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
   "/home/dyx/HardProject/bin/schedule_test"
   "/home/dyx/HardProject/bin/schedule_test.pdb"
-  "CMakeFiles/schedule_test.dir/tests/test_Schedule.cc.o"
-  "CMakeFiles/schedule_test.dir/tests/test_Schedule.cc.o.d"
+  "CMakeFiles/schedule_test.dir/tests/test_Schedule1.cc.o"
+  "CMakeFiles/schedule_test.dir/tests/test_Schedule1.cc.o.d"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -69,28 +69,28 @@ include CMakeFiles/fiber_test.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/fiber_test.dir/flags.make
 
-CMakeFiles/fiber_test.dir/tests/test_Fiber.cc.o: CMakeFiles/fiber_test.dir/flags.make
-CMakeFiles/fiber_test.dir/tests/test_Fiber.cc.o: /home/dyx/HardProject/tests/test_Fiber.cc
-CMakeFiles/fiber_test.dir/tests/test_Fiber.cc.o: CMakeFiles/fiber_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dyx/HardProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/fiber_test.dir/tests/test_Fiber.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/fiber_test.dir/tests/test_Fiber.cc.o -MF CMakeFiles/fiber_test.dir/tests/test_Fiber.cc.o.d -o CMakeFiles/fiber_test.dir/tests/test_Fiber.cc.o -c /home/dyx/HardProject/tests/test_Fiber.cc
+CMakeFiles/fiber_test.dir/tests/test_Fiber1.cc.o: CMakeFiles/fiber_test.dir/flags.make
+CMakeFiles/fiber_test.dir/tests/test_Fiber1.cc.o: /home/dyx/HardProject/tests/test_Fiber1.cc
+CMakeFiles/fiber_test.dir/tests/test_Fiber1.cc.o: CMakeFiles/fiber_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dyx/HardProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/fiber_test.dir/tests/test_Fiber1.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/fiber_test.dir/tests/test_Fiber1.cc.o -MF CMakeFiles/fiber_test.dir/tests/test_Fiber1.cc.o.d -o CMakeFiles/fiber_test.dir/tests/test_Fiber1.cc.o -c /home/dyx/HardProject/tests/test_Fiber1.cc
 
-CMakeFiles/fiber_test.dir/tests/test_Fiber.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/fiber_test.dir/tests/test_Fiber.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dyx/HardProject/tests/test_Fiber.cc > CMakeFiles/fiber_test.dir/tests/test_Fiber.cc.i
+CMakeFiles/fiber_test.dir/tests/test_Fiber1.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/fiber_test.dir/tests/test_Fiber1.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dyx/HardProject/tests/test_Fiber1.cc > CMakeFiles/fiber_test.dir/tests/test_Fiber1.cc.i
 
-CMakeFiles/fiber_test.dir/tests/test_Fiber.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/fiber_test.dir/tests/test_Fiber.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dyx/HardProject/tests/test_Fiber.cc -o CMakeFiles/fiber_test.dir/tests/test_Fiber.cc.s
+CMakeFiles/fiber_test.dir/tests/test_Fiber1.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/fiber_test.dir/tests/test_Fiber1.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dyx/HardProject/tests/test_Fiber1.cc -o CMakeFiles/fiber_test.dir/tests/test_Fiber1.cc.s
 
 # Object files for target fiber_test
 fiber_test_OBJECTS = \
-"CMakeFiles/fiber_test.dir/tests/test_Fiber.cc.o"
+"CMakeFiles/fiber_test.dir/tests/test_Fiber1.cc.o"
 
 # External object files for target fiber_test
 fiber_test_EXTERNAL_OBJECTS =
 
-/home/dyx/HardProject/bin/fiber_test: CMakeFiles/fiber_test.dir/tests/test_Fiber.cc.o
+/home/dyx/HardProject/bin/fiber_test: CMakeFiles/fiber_test.dir/tests/test_Fiber1.cc.o
 /home/dyx/HardProject/bin/fiber_test: CMakeFiles/fiber_test.dir/build.make
 /home/dyx/HardProject/bin/fiber_test: libhardproject.a
 /home/dyx/HardProject/bin/fiber_test: CMakeFiles/fiber_test.dir/link.txt

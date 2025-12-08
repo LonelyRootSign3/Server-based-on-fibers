@@ -8,12 +8,12 @@
 #include <vector>
 #include <string>
 #include "Log.h"
-#include "Fiber.h"
+#include "Fiber1.h"
 namespace DYX{
     //获取内核级别的线程id
     pid_t GetThreadId();
     //获取协程id
-    uint32_t GetFiberId();
+    int GetFiberId();
 
     //获取类型名
     template<typename T>
@@ -43,6 +43,19 @@ namespace DYX{
      * @param[in] prefix 栈信息前输出的内容
      */
     std::string BacktraceToString(int size = 64, int skip = 2, const std::string& prefix = "");//将调用栈转换成字符串
+
+    /**
+     * @brief 获取当前时间的毫秒
+     */
+    uint64_t GetCurrentMS();
+
+    /**
+     * @brief 获取当前时间的微秒
+     */
+    uint64_t GetCurrentUS();
+
+    std::string Time2Str(time_t ts = time(0), const std::string& format = "%Y-%m-%d %H:%M:%S");
+    time_t Str2Time(const char* str, const char* format = "%Y-%m-%d %H:%M:%S");
 
 
 }    
