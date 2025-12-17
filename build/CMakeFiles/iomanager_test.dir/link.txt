@@ -1,1 +1,1 @@
-/usr/bin/c++ -g -rdynamic CMakeFiles/iomanager_test.dir/tests/test_IOManager.cc.o -o /home/dyx/HardProject/bin/iomanager_test  libhardproject.a -lyaml-cpp 
+/usr/bin/c++ -g -rdynamic CMakeFiles/iomanager_test.dir/tests/test_IOManager.cc.o -o /home/dyx/HardProject/bin/iomanager_test  libhardproject.a -lyaml-cpp -ldl 

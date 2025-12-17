@@ -190,6 +190,30 @@ src/Env.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Env.cc.s
 .PHONY : src/Env.cc.s
 
+src/FdManager.o: src/FdManager.cc.o
+.PHONY : src/FdManager.o
+
+# target to build an object file
+src/FdManager.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/FdManager.cc.o
+.PHONY : src/FdManager.cc.o
+
+src/FdManager.i: src/FdManager.cc.i
+.PHONY : src/FdManager.i
+
+# target to preprocess a source file
+src/FdManager.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/FdManager.cc.i
+.PHONY : src/FdManager.cc.i
+
+src/FdManager.s: src/FdManager.cc.s
+.PHONY : src/FdManager.s
+
+# target to generate assembly for a file
+src/FdManager.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/FdManager.cc.s
+.PHONY : src/FdManager.cc.s
+
 src/Fiber1.o: src/Fiber1.cc.o
 .PHONY : src/Fiber1.o
 
@@ -470,6 +494,9 @@ help:
 	@echo "... src/Env.o"
 	@echo "... src/Env.i"
 	@echo "... src/Env.s"
+	@echo "... src/FdManager.o"
+	@echo "... src/FdManager.i"
+	@echo "... src/FdManager.s"
 	@echo "... src/Fiber1.o"
 	@echo "... src/Fiber1.i"
 	@echo "... src/Fiber1.s"

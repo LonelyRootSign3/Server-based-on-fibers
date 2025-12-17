@@ -13,6 +13,12 @@
 },
 {
   "directory": "/home/dyx/HardProject/build",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/FdManager.cc.o -c /home/dyx/HardProject/src/FdManager.cc",
+  "file": "/home/dyx/HardProject/src/FdManager.cc",
+  "output": "CMakeFiles/hardproject.dir/src/FdManager.cc.o"
+},
+{
+  "directory": "/home/dyx/HardProject/build",
   "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Fiber1.cc.o -c /home/dyx/HardProject/src/Fiber1.cc",
   "file": "/home/dyx/HardProject/src/Fiber1.cc",
   "output": "CMakeFiles/hardproject.dir/src/Fiber1.cc.o"

@@ -5,7 +5,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-
+#if 1
 namespace DYX{
     
 FdCtx::FdCtx(int fd)
@@ -136,3 +136,4 @@ void FdManager::del(int fd){
 
 
 }
+#endif

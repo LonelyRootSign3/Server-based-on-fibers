@@ -34,9 +34,9 @@ void IOManager::FdContext::triggerEvent(EVENT event){
     event_type = (EVENT)(event_type & ~event);//执行了该事件，就从关注的事件中删除它
     EventContext &event_ctx = getContext(event);
     if(event_ctx.fiber){
-        event_ctx.scheduler->pushtask(event_ctx.fiber);
+        event_ctx.scheduler->pushtask(&event_ctx.fiber);
     }else if(event_ctx.cb){
-       event_ctx.scheduler->pushtask(event_ctx.cb);
+       event_ctx.scheduler->pushtask(&event_ctx.cb);
     }else{
         STREAM_LOG_ERROR(g_logger)<<"fd_ctx 没有执行协程或回调";
     }
@@ -275,7 +275,7 @@ void IOManager::Idle(){
         //阻塞在epoll_wait里等待
         do{
             next_timeout = getNextTimer();//获取下一个定时器的超时时间
-            static const uint64_t timeout = 5000;//默认超时时间为5秒
+            static const uint64_t timeout = 4000;//默认超时时间为4秒
             if(next_timeout != ~0ull){
                 next_timeout = (int)next_timeout > timeout ? timeout : next_timeout;
             } else {

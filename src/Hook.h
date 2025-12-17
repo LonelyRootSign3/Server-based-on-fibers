@@ -5,7 +5,7 @@
 #include <stdint.h>
 #include <time.h>
 #include <unistd.h>
-
+#if 1
 namespace DYX{
 //当前线程是否hook
 bool IsHookEnable();
@@ -89,3 +89,4 @@ extern int connect_with_timeout(int fd, const struct sockaddr* addr, socklen_t a
 
     
 }
+#endif

@@ -1,8 +1,10 @@
 #pragma once
 #include <cstdint>
 #include <memory>
+#include <vector>
 #include "Mutex.h"
 #include "Singleton.h"
+#if 1
 namespace DYX{
 
 //文件描述符上下文类
@@ -21,6 +23,7 @@ public:
     bool isSysNonblock() const { return m_sysNonblock; }
     bool isUserNonblock() const { return m_userNonblock; }
     bool isClose() const { return m_close; }
+    void setClose(bool v) { m_close = v; }
 
     void setUserNonblock(bool v) { m_userNonblock = v; }
     void setSysNonblock(bool v) { m_sysNonblock = v; }
@@ -56,3 +59,4 @@ private:
 using FdMgr = Singleton<FdManager>;
     
 }
+#endif

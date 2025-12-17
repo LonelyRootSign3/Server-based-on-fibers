@@ -5,6 +5,8 @@
 #include "FdManager.h"
 #include "Config.h"
 #include <dlfcn.h>
+#include <sys/ioctl.h>
+#if 1
 static DYX::Logger::Ptr g_logger = GET_NAME_LOGGER("system");  
 
 namespace DYX{
@@ -82,7 +84,7 @@ struct timer_info{//定时器的信息
 
 
 template<typename OriginFunc,typename... Args>
-int do_io(int fd , OriginFunc func,const char *func_name,
+static ssize_t do_io(int fd , OriginFunc func,const char *func_name,
           uint32_t event,int timeout_ms,Args&&... args){
     if(!DYX::IsHookEnable()){//没有启动钩子，直接调用系统函数
         return func(fd,std::forward<Args>(args)...);
@@ -103,27 +105,35 @@ int do_io(int fd , OriginFunc func,const char *func_name,
 
 retry:
     //先执行真实的系统调用
-    size_t ret = func(fd,std::forward<Args>(args)...);
+    ssize_t ret = func(fd,std::forward<Args>(args)...);
+    if(ret >= 0) return ret;
+    
     while(ret == -1 && errno == EINTR){//被系统打断，需要重试
         ret = func(fd,std::forward<Args>(args)...);
     }
-    if(ret == -1 && errno == EAGAIN){//数据没有来，需要等待，将协程挂起
+    if(errno == ECONNRESET || errno == EPIPE){//对端重置连接
+        STREAM_LOG_DEBUG(g_logger)<<"do_io "<<func_name<<" fd="<<fd
+            <<" errno="<<errno<<" ("<<"对端重置连接"<<")";
+        return ret;
+    }
+
+    if(errno == EAGAIN || errno == EWOULDBLOCK){//数据没有来，需要等待，将协程挂起
         DYX::IOManager *iom = DYX::IOManager::GetThis();
         DYX::Timer::Ptr timer;//构建定时器
         std::weak_ptr<timer_info> wtinfo = tinfo;//条件定时器的条件(原定时器是否取消过)
         //如果设置了超时时间
         if(timeout != (uint64_t)-1){
-            timer = iom->addConditionTimer(timeout, [iom,curfib,wtinfo](){
+            timer = iom->addConditionTimer(timeout, [fd,iom,wtinfo,event](){
                 auto timeinfo = wtinfo.lock();
                 if(!timeinfo || timeinfo->canceled){//定时器被取消了，说明在这之前，该任务被执行过了，直接返回
                     return ;
                 }
                 timeinfo->canceled = ETIMEDOUT;
-                iom->cancelEvent(fd, (DYX::IOManager::Event)(event));
+                iom->cancelEvent(fd, (DYX::IOManager::EVENT)event);
             },wtinfo);
         }
-        int ret = iom->addEvent(fd, (DYX::IOManager::Event)(event));//将该协程登记到fd的READ/WRITE事件上,如果触发事件，则唤醒协程
-        if(MY_UNLIKELY(ret)){
+        int ret = iom->addEvent(fd, (DYX::IOManager::EVENT)(event));//将该协程登记到fd的READ/WRITE事件上,如果触发事件，则唤醒协程
+        if(MY_UNLIKELY(!ret)){
             if(timer){
                 timer->cancel();
             }
@@ -213,7 +223,7 @@ int socket(int domain,int type,int protocol){
     return fd;
 }
 
-int connect_with_timeout(int fd, const struct sockaddr *addr, socklen_t addrlen, int timeout_ms) {
+int connect_with_timeout(int fd, const struct sockaddr *addr, socklen_t addrlen, uint64_t timeout_ms) {
     if(!DYX::IsHookEnable()){
         return connect_f(fd,addr,addrlen);
     }
@@ -225,7 +235,7 @@ int connect_with_timeout(int fd, const struct sockaddr *addr, socklen_t addrlen,
     if(!ctx->isSocket() || ctx->isUserNonblock()){//非socket或用户设置为非阻塞
         return connect_f(fd,addr,addrlen);
     }
-    int n = connect(fd,addr,addrlen);
+    int n = connect_f(fd,addr,addrlen);
     if(n == 0) return n;//成功直接返回
     else if( n!=-1 || errno != EINPROGRESS) return n;
 
@@ -245,8 +255,9 @@ int connect_with_timeout(int fd, const struct sockaddr *addr, socklen_t addrlen,
             iom->cancelEvent(fd, (DYX::IOManager::WRITE));
         },winfo);
     }
-    int rt = iom->addEvent(fd,DYX::IOManager::WRITE);
-    if(rt == 0){
+    bool rt = iom->addEvent(fd,DYX::IOManager::WRITE);
+    if(rt){
+        STREAM_LOG_DEBUG(g_logger)<<"connect addEvent("<<fd<<", WRITE) success";
         DYX::Fiber::YieldToHold();
         if(timer){
             timer->cancel();
@@ -339,6 +350,7 @@ int close(int fd){
     }
     DYX::FdCtx::Ptr ctx = DYX::FdMgr::GetInstance()->get(fd);
     if(ctx) {
+        ctx->setClose(true);
         auto iom = DYX::IOManager::GetThis();
         if(iom) {
             iom->cancelAll(fd);
@@ -348,6 +360,128 @@ int close(int fd){
     return close_f(fd);
 }
 
+int fcntl(int fd ,int cmd, ...){
+    va_list va;
+    switch(cmd){
+        case F_SETFL:
+            {
+                int arg = va_arg(va,int);
+                va_end(va);
+                auto ctx = DYX::FdMgr::GetInstance()->get(fd);
+                if(!ctx || ctx->isClose() || !ctx->isSocket()){
+                    return fcntl_f(fd,cmd,arg);
+                }
+                ctx->setUserNonblock(arg & O_NONBLOCK);
+                if(ctx->isSysNonblock()){
+                    arg |= O_NONBLOCK;
+                }else{
+                    arg &= ~O_NONBLOCK;
+                }
+                return fcntl_f(fd,cmd,arg);
+            }
+            break;
+        case F_GETFL:
+            {
+                va_end(va);
+                int arg = fcntl_f(fd,cmd);
+                auto ctx = DYX::FdMgr::GetInstance()->get(fd);
+                if(!ctx || ctx->isClose() || !ctx->isSocket()){
+                    return arg;
+                }
+                if(ctx->isUserNonblock()){
+                    return arg |= O_NONBLOCK;
+                }else{
+                    return arg &= ~O_NONBLOCK;
+                }
+            }
+            break;
+        case F_DUPFD:
+        case F_DUPFD_CLOEXEC:
+        case F_SETFD:
+        case F_SETOWN:
+        case F_SETSIG:
+        case F_SETLEASE:
+        case F_NOTIFY:
+#ifdef F_SETPIPE_SZ
+        case F_SETPIPE_SZ:
+#endif
+            {
+                int arg = va_arg(va, int);
+                va_end(va);
+                return fcntl_f(fd, cmd, arg); 
+            }
+            break;
+        case F_GETFD:
+        case F_GETOWN:
+        case F_GETSIG:
+        case F_GETLEASE:
+#ifdef F_GETPIPE_SZ
+        case F_GETPIPE_SZ:
+#endif
+            {
+                va_end(va);
+                return fcntl_f(fd, cmd);
+            }
+            break;
+        case F_SETLK:
+        case F_SETLKW:
+        case F_GETLK:
+            {
+                struct flock* arg = va_arg(va, struct flock*);
+                va_end(va);
+                return fcntl_f(fd, cmd, arg);
+            }
+            break;
+        case F_GETOWN_EX:
+        case F_SETOWN_EX:
+            {
+                struct f_owner_exlock* arg = va_arg(va, struct f_owner_exlock*);
+                va_end(va);
+                return fcntl_f(fd, cmd, arg);
+            }
+            break;
+        default:
+            va_end(va);
+            return fcntl_f(fd, cmd);
+    }
+}
 
+int ioctl(int d,unsigned long int request, ...){
+    va_list va;
+    va_start(va,request);
+    void *arg = va_arg(va,void *);
+    va_end(va);
+    if(FIONBIO == request){
+        bool user_noblock = !!*(int*)arg;
+        auto ctx = DYX::FdMgr::GetInstance()->get(d);
+        if(!ctx || ctx->isClose() || !ctx->isSocket()){
+            return ioctl_f(d,request,arg);
+        }
+        ctx->setUserNonblock(user_noblock);
+    }
+    return ioctl_f(d,request,arg);
+}
+
+int getsockopt(int sockfd, int level, int optname, void *optval, socklen_t *optlen) {
+     return getsockopt_f(sockfd, level, optname, optval, optlen);
+}
+
+
+int setsockopt(int sockfd, int level, int optname, const void *optval, socklen_t optlen) {
+    if(!DYX::t_hook_enable) {
+        return setsockopt_f(sockfd, level, optname, optval, optlen);
+    }
+    if(level == SOL_SOCKET) {
+        if(optname == SO_RCVTIMEO || optname == SO_SNDTIMEO) {
+            auto ctx = DYX::FdMgr::GetInstance()->get(sockfd);
+            if(ctx) {
+                const timeval* v = (const timeval*)optval;
+                ctx->setTimeout(optname, v->tv_sec * 1000 + v->tv_usec / 1000);
+            }
+        }
+    }
+    return setsockopt_f(sockfd, level, optname, optval, optlen);
+}
 
 }
+#endif

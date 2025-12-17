@@ -55,7 +55,7 @@ void test_timer(){
         STREAM_LOG_INFO(g_logger) << "hello timer" << i++;
         if(i == 3){
             s_timer->reset(2000, true);
-            // s_timer->cancel();
+            s_timer->cancel();
         }
     },true);
 

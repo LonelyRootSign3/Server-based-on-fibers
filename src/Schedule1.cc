@@ -1,7 +1,7 @@
 #include "Schedule1.h"
 #include "Log.h"
 #include "Macro.h"
-#include "Util.h"
+#include "Util.h"   
 #include "Hook.h"
 namespace DYX{
 
@@ -42,9 +42,7 @@ void Scheduler::Start(){
         m_threads[i] = (std::make_shared<Thread>(std::bind(&Scheduler::Run,this),m_name + "_" + std::to_string(i)));
         m_threadIds.push_back(m_threads[i]->Gettid());//将线程id加入线程id池
     }
-    // if(use_main){
-    //     t_root_schedule_fiber->RootScheduleSwapIn();//主线程中的调度协程切入
-    // }
+
 }
 
 void Scheduler::Run(){
@@ -67,14 +65,12 @@ void Scheduler::Run(){
 
     STREAM_LOG_DEBUG(g_logger)<<"idle fiber construct";
     Fiber::Ptr idle_fiber = std::make_shared<Fiber>(std::bind(&Scheduler::Idle,this));
-    
-    Task task;
+    //2.一个可复用的“执行回调”的协程壳（承载 std::function<void()>）
+    Fiber::Ptr cb_fiber = nullptr;
     // std::shared_ptr<Task> task;//任务结构体,用于抽象协程和函数
     while(true){
-
-        //2.一个可复用的“执行回调”的协程壳（承载 std::function<void()>）
-        Fiber::Ptr cb_fiber = nullptr;
-        task.Reset();//重置任务结构体
+        Task task;
+        // task.Reset();//重置任务结构体
         bool need_notify = false; //唤醒其他线程来取任务的标准位
         //开始去任务队列取任务(临界区)
         {
@@ -115,29 +111,39 @@ void Scheduler::Run(){
             continue;//从idle协程切换到调度协程,继续重新取任务
         }
 
-        //有任务，执行任务
-        // if(task.cb){
-        //     if(cb_fiber){
-        //         cb_fiber->Reset(task.cb);//重置协程函数
-        //     }else{
-        //         STREAM_LOG_DEBUG(g_logger)<<"cb fiber construct";
-        //         cb_fiber = std::make_shared<Fiber>(task.cb);
-        //     }
-        // }else if(task.fiberptr){
-        //     // cb_fiber.swap(task.fiberptr);//将任务协程赋值给cb_fiber
-        //     cb_fiber = std::move(task.fiberptr);//将任务协程赋值给cb_fiber
-        // }
-
+        // 有任务，执行任务
         if(task.cb){
-            cb_fiber = std::make_shared<Fiber>(task.cb);//创建新的协程
-        }else if(task.fiberptr){
-            cb_fiber = std::move(task.fiberptr);//将任务协程赋值给cb_fiber
-        }
+            if(cb_fiber){
+                cb_fiber->Reset(task.cb);//重置协程函数
+            }else{
+                STREAM_LOG_DEBUG(g_logger)<<"cb fiber construct";
+                cb_fiber = std::make_shared<Fiber>(task.cb);
+            }
 
-        ++m_activeThdCnt;//活动线程数加一
-        STREAM_LOG_DEBUG(g_logger)<<"cb fiber swap in";
-        cb_fiber->SwapIn();//切换到cb协程
-        --m_activeThdCnt;//活动线程数减一
+            STREAM_LOG_DEBUG(g_logger)<<"task cb fiber swap in";
+            ++m_activeThdCnt;//活动线程数加一
+            cb_fiber->SwapIn();//切换到cb协程
+            --m_activeThdCnt;//活动线程数减一
+
+            if(cb_fiber->GetState() == Fiber::TERM){//协程执行完毕
+                cb_fiber->Reset(nullptr);//重置协程函数（短任务复用同一个协程栈）
+            }else if(cb_fiber->GetState() == Fiber::HOLD){
+                cb_fiber.reset();//不管理hold状态的协程,下次重新创建，避免共享栈问题
+            }
+        }else if(task.fiberptr ){
+            if(task.fiberptr->GetState() == Fiber::TERM){
+                task.fiberptr.reset();
+                continue;
+            }
+            STREAM_LOG_DEBUG(g_logger)<<"task fiberptr swap in";
+            ++m_activeThdCnt;//活动线程数加一
+            task.fiberptr->SwapIn();
+            --m_activeThdCnt;//活动线程数减一
+            //切回调度协程如果上次运行的协程没有结束（yieldtohold），则设置为hold状态
+            if(task.fiberptr->GetState() != Fiber::TERM){
+                task.fiberptr->SetState(Fiber::HOLD);//设置为hold状态
+            }
+        }
         
         // m_notify = false;//设置为不需要通知线程
         

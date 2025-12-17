@@ -21,10 +21,15 @@ public:
     Fiber(std::function<void()> cb,int size = 1024 * 128);
     ~Fiber();
 
-    //协程切换的接口
+    //协程切入的接口
     void SwapIn();
+    //协程切出的接口
+    void SwapOut();
+
     //主线程中的调度协程切入接口
     void RootScheduleSwapIn();
+    //主线程中的调度协程切出接口
+    void RootScheduleSwapOut();
     //重置协程函数
     void Reset(std::function<void()>cb);
     void SetState(State state);

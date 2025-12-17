@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/hardproject.dir/src/Config.cc.o.d"
   "CMakeFiles/hardproject.dir/src/Env.cc.o"
   "CMakeFiles/hardproject.dir/src/Env.cc.o.d"
+  "CMakeFiles/hardproject.dir/src/FdManager.cc.o"
+  "CMakeFiles/hardproject.dir/src/FdManager.cc.o.d"
   "CMakeFiles/hardproject.dir/src/Fiber1.cc.o"
   "CMakeFiles/hardproject.dir/src/Fiber1.cc.o.d"
   "CMakeFiles/hardproject.dir/src/Hook.cc.o"

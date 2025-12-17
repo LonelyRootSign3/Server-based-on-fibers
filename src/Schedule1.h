@@ -113,16 +113,28 @@ private:
         m_tasks.push_back(std::move(t));
         return true;
     }
+    // 5) Fiber::Ptr* 版本
+    bool addTask(Fiber::Ptr* fiber, pid_t thread_id) {
+        if(fiber && *fiber) {
+            Task t(*fiber, thread_id);   // 拿走 Fiber
+            m_tasks.push_back(std::move(t));
+            fiber->reset();              //  关键：当场解绑
+            return true;
+        }
+        return false;
+    }
 
-    // // 5) 通用 callable / 函数指针 / lambda
-    // //    其它任何可调用对象，统一先包成 std::function<void()>
-    // template<class F>
-    // bool addTask(F &&f, pid_t thread_id) {
-    //     std::function<void()> cb(std::forward<F>(f)); // 支持 lambda / 函数指针 / 仿函数
-    //     Task t(std::move(cb), thread_id);
-    //     m_tasks.push_back(std::move(t));
-    //     return true;
-    // }
+    // 6) std::function<void()>* 版本
+    bool addTask(std::function<void()>* cb, pid_t thread_id) {
+        if(cb && *cb) {
+            Task t(std::move(*cb), thread_id);
+            m_tasks.push_back(std::move(t));
+            cb->operator=(nullptr);      // 或 cb->clear()
+            return true;
+        }
+        return false;
+    }
+
 private:
 
     bool m_isRunning = false;//是否正在运行
@@ -137,8 +149,8 @@ private:
     MutexType m_mutex;//读写互斥锁
 
     pid_t m_rootThreadId = 0;//主线程id
-    std::atomic<int> m_activeThdCnt = 0;//当前活动线程数
-    std::atomic<int> m_idleThdCnt = 0;//当前空闲线程数
+    std::atomic_int m_activeThdCnt{0};//当前活动线程数
+    std::atomic_int m_idleThdCnt{0};//当前空闲线程数
     Fiber::Ptr m_rootFiber = nullptr;//根协程（usemain = true时）
 };
 
