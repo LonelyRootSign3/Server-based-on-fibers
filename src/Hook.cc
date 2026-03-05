@@ -72,7 +72,7 @@ struct HookIniter{
     }
 };
 
-// 全局静态对象，在程序启动时自动初始化（先于main）
+// 全局静态对象，在程序启动时自动初始化（先于main）  
 static HookIniter _hook_initer;
 
 

@@ -69,10 +69,38 @@ include CMakeFiles/hardproject.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/hardproject.dir/flags.make
 
+CMakeFiles/hardproject.dir/src/Address.cc.o: CMakeFiles/hardproject.dir/flags.make
+CMakeFiles/hardproject.dir/src/Address.cc.o: /home/dyx/HardProject/src/Address.cc
+CMakeFiles/hardproject.dir/src/Address.cc.o: CMakeFiles/hardproject.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dyx/HardProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/hardproject.dir/src/Address.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/hardproject.dir/src/Address.cc.o -MF CMakeFiles/hardproject.dir/src/Address.cc.o.d -o CMakeFiles/hardproject.dir/src/Address.cc.o -c /home/dyx/HardProject/src/Address.cc
+
+CMakeFiles/hardproject.dir/src/Address.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/hardproject.dir/src/Address.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dyx/HardProject/src/Address.cc > CMakeFiles/hardproject.dir/src/Address.cc.i
+
+CMakeFiles/hardproject.dir/src/Address.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/hardproject.dir/src/Address.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dyx/HardProject/src/Address.cc -o CMakeFiles/hardproject.dir/src/Address.cc.s
+
+CMakeFiles/hardproject.dir/src/Bytearray.cc.o: CMakeFiles/hardproject.dir/flags.make
+CMakeFiles/hardproject.dir/src/Bytearray.cc.o: /home/dyx/HardProject/src/Bytearray.cc
+CMakeFiles/hardproject.dir/src/Bytearray.cc.o: CMakeFiles/hardproject.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dyx/HardProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/hardproject.dir/src/Bytearray.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/hardproject.dir/src/Bytearray.cc.o -MF CMakeFiles/hardproject.dir/src/Bytearray.cc.o.d -o CMakeFiles/hardproject.dir/src/Bytearray.cc.o -c /home/dyx/HardProject/src/Bytearray.cc
+
+CMakeFiles/hardproject.dir/src/Bytearray.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/hardproject.dir/src/Bytearray.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dyx/HardProject/src/Bytearray.cc > CMakeFiles/hardproject.dir/src/Bytearray.cc.i
+
+CMakeFiles/hardproject.dir/src/Bytearray.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/hardproject.dir/src/Bytearray.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dyx/HardProject/src/Bytearray.cc -o CMakeFiles/hardproject.dir/src/Bytearray.cc.s
+
 CMakeFiles/hardproject.dir/src/Config.cc.o: CMakeFiles/hardproject.dir/flags.make
 CMakeFiles/hardproject.dir/src/Config.cc.o: /home/dyx/HardProject/src/Config.cc
 CMakeFiles/hardproject.dir/src/Config.cc.o: CMakeFiles/hardproject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dyx/HardProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/hardproject.dir/src/Config.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dyx/HardProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/hardproject.dir/src/Config.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/hardproject.dir/src/Config.cc.o -MF CMakeFiles/hardproject.dir/src/Config.cc.o.d -o CMakeFiles/hardproject.dir/src/Config.cc.o -c /home/dyx/HardProject/src/Config.cc
 
 CMakeFiles/hardproject.dir/src/Config.cc.i: cmake_force
@@ -86,7 +114,7 @@ CMakeFiles/hardproject.dir/src/Config.cc.s: cmake_force
 CMakeFiles/hardproject.dir/src/Env.cc.o: CMakeFiles/hardproject.dir/flags.make
 CMakeFiles/hardproject.dir/src/Env.cc.o: /home/dyx/HardProject/src/Env.cc
 CMakeFiles/hardproject.dir/src/Env.cc.o: CMakeFiles/hardproject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dyx/HardProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/hardproject.dir/src/Env.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dyx/HardProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/hardproject.dir/src/Env.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/hardproject.dir/src/Env.cc.o -MF CMakeFiles/hardproject.dir/src/Env.cc.o.d -o CMakeFiles/hardproject.dir/src/Env.cc.o -c /home/dyx/HardProject/src/Env.cc
 
 CMakeFiles/hardproject.dir/src/Env.cc.i: cmake_force
@@ -100,7 +128,7 @@ CMakeFiles/hardproject.dir/src/Env.cc.s: cmake_force
 CMakeFiles/hardproject.dir/src/FdManager.cc.o: CMakeFiles/hardproject.dir/flags.make
 CMakeFiles/hardproject.dir/src/FdManager.cc.o: /home/dyx/HardProject/src/FdManager.cc
 CMakeFiles/hardproject.dir/src/FdManager.cc.o: CMakeFiles/hardproject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dyx/HardProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/hardproject.dir/src/FdManager.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dyx/HardProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/hardproject.dir/src/FdManager.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/hardproject.dir/src/FdManager.cc.o -MF CMakeFiles/hardproject.dir/src/FdManager.cc.o.d -o CMakeFiles/hardproject.dir/src/FdManager.cc.o -c /home/dyx/HardProject/src/FdManager.cc
 
 CMakeFiles/hardproject.dir/src/FdManager.cc.i: cmake_force
@@ -114,7 +142,7 @@ CMakeFiles/hardproject.dir/src/FdManager.cc.s: cmake_force
 CMakeFiles/hardproject.dir/src/Fiber1.cc.o: CMakeFiles/hardproject.dir/flags.make
 CMakeFiles/hardproject.dir/src/Fiber1.cc.o: /home/dyx/HardProject/src/Fiber1.cc
 CMakeFiles/hardproject.dir/src/Fiber1.cc.o: CMakeFiles/hardproject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dyx/HardProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/hardproject.dir/src/Fiber1.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dyx/HardProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/hardproject.dir/src/Fiber1.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/hardproject.dir/src/Fiber1.cc.o -MF CMakeFiles/hardproject.dir/src/Fiber1.cc.o.d -o CMakeFiles/hardproject.dir/src/Fiber1.cc.o -c /home/dyx/HardProject/src/Fiber1.cc
 
 CMakeFiles/hardproject.dir/src/Fiber1.cc.i: cmake_force
@@ -128,7 +156,7 @@ CMakeFiles/hardproject.dir/src/Fiber1.cc.s: cmake_force
 CMakeFiles/hardproject.dir/src/Hook.cc.o: CMakeFiles/hardproject.dir/flags.make
 CMakeFiles/hardproject.dir/src/Hook.cc.o: /home/dyx/HardProject/src/Hook.cc
 CMakeFiles/hardproject.dir/src/Hook.cc.o: CMakeFiles/hardproject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dyx/HardProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/hardproject.dir/src/Hook.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dyx/HardProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/hardproject.dir/src/Hook.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/hardproject.dir/src/Hook.cc.o -MF CMakeFiles/hardproject.dir/src/Hook.cc.o.d -o CMakeFiles/hardproject.dir/src/Hook.cc.o -c /home/dyx/HardProject/src/Hook.cc
 
 CMakeFiles/hardproject.dir/src/Hook.cc.i: cmake_force
@@ -142,7 +170,7 @@ CMakeFiles/hardproject.dir/src/Hook.cc.s: cmake_force
 CMakeFiles/hardproject.dir/src/IOManager.cc.o: CMakeFiles/hardproject.dir/flags.make
 CMakeFiles/hardproject.dir/src/IOManager.cc.o: /home/dyx/HardProject/src/IOManager.cc
 CMakeFiles/hardproject.dir/src/IOManager.cc.o: CMakeFiles/hardproject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dyx/HardProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/hardproject.dir/src/IOManager.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dyx/HardProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/hardproject.dir/src/IOManager.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/hardproject.dir/src/IOManager.cc.o -MF CMakeFiles/hardproject.dir/src/IOManager.cc.o.d -o CMakeFiles/hardproject.dir/src/IOManager.cc.o -c /home/dyx/HardProject/src/IOManager.cc
 
 CMakeFiles/hardproject.dir/src/IOManager.cc.i: cmake_force
@@ -156,7 +184,7 @@ CMakeFiles/hardproject.dir/src/IOManager.cc.s: cmake_force
 CMakeFiles/hardproject.dir/src/Log.cc.o: CMakeFiles/hardproject.dir/flags.make
 CMakeFiles/hardproject.dir/src/Log.cc.o: /home/dyx/HardProject/src/Log.cc
 CMakeFiles/hardproject.dir/src/Log.cc.o: CMakeFiles/hardproject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dyx/HardProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/hardproject.dir/src/Log.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dyx/HardProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/hardproject.dir/src/Log.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/hardproject.dir/src/Log.cc.o -MF CMakeFiles/hardproject.dir/src/Log.cc.o.d -o CMakeFiles/hardproject.dir/src/Log.cc.o -c /home/dyx/HardProject/src/Log.cc
 
 CMakeFiles/hardproject.dir/src/Log.cc.i: cmake_force
@@ -170,7 +198,7 @@ CMakeFiles/hardproject.dir/src/Log.cc.s: cmake_force
 CMakeFiles/hardproject.dir/src/Logdefine.cc.o: CMakeFiles/hardproject.dir/flags.make
 CMakeFiles/hardproject.dir/src/Logdefine.cc.o: /home/dyx/HardProject/src/Logdefine.cc
 CMakeFiles/hardproject.dir/src/Logdefine.cc.o: CMakeFiles/hardproject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dyx/HardProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/hardproject.dir/src/Logdefine.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dyx/HardProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/hardproject.dir/src/Logdefine.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/hardproject.dir/src/Logdefine.cc.o -MF CMakeFiles/hardproject.dir/src/Logdefine.cc.o.d -o CMakeFiles/hardproject.dir/src/Logdefine.cc.o -c /home/dyx/HardProject/src/Logdefine.cc
 
 CMakeFiles/hardproject.dir/src/Logdefine.cc.i: cmake_force
@@ -184,7 +212,7 @@ CMakeFiles/hardproject.dir/src/Logdefine.cc.s: cmake_force
 CMakeFiles/hardproject.dir/src/Mutex.cc.o: CMakeFiles/hardproject.dir/flags.make
 CMakeFiles/hardproject.dir/src/Mutex.cc.o: /home/dyx/HardProject/src/Mutex.cc
 CMakeFiles/hardproject.dir/src/Mutex.cc.o: CMakeFiles/hardproject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dyx/HardProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/hardproject.dir/src/Mutex.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dyx/HardProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/hardproject.dir/src/Mutex.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/hardproject.dir/src/Mutex.cc.o -MF CMakeFiles/hardproject.dir/src/Mutex.cc.o.d -o CMakeFiles/hardproject.dir/src/Mutex.cc.o -c /home/dyx/HardProject/src/Mutex.cc
 
 CMakeFiles/hardproject.dir/src/Mutex.cc.i: cmake_force
@@ -198,7 +226,7 @@ CMakeFiles/hardproject.dir/src/Mutex.cc.s: cmake_force
 CMakeFiles/hardproject.dir/src/Schedule1.cc.o: CMakeFiles/hardproject.dir/flags.make
 CMakeFiles/hardproject.dir/src/Schedule1.cc.o: /home/dyx/HardProject/src/Schedule1.cc
 CMakeFiles/hardproject.dir/src/Schedule1.cc.o: CMakeFiles/hardproject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dyx/HardProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/hardproject.dir/src/Schedule1.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dyx/HardProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/hardproject.dir/src/Schedule1.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/hardproject.dir/src/Schedule1.cc.o -MF CMakeFiles/hardproject.dir/src/Schedule1.cc.o.d -o CMakeFiles/hardproject.dir/src/Schedule1.cc.o -c /home/dyx/HardProject/src/Schedule1.cc
 
 CMakeFiles/hardproject.dir/src/Schedule1.cc.i: cmake_force
@@ -209,10 +237,38 @@ CMakeFiles/hardproject.dir/src/Schedule1.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/hardproject.dir/src/Schedule1.cc.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dyx/HardProject/src/Schedule1.cc -o CMakeFiles/hardproject.dir/src/Schedule1.cc.s
 
+CMakeFiles/hardproject.dir/src/Socket.cc.o: CMakeFiles/hardproject.dir/flags.make
+CMakeFiles/hardproject.dir/src/Socket.cc.o: /home/dyx/HardProject/src/Socket.cc
+CMakeFiles/hardproject.dir/src/Socket.cc.o: CMakeFiles/hardproject.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dyx/HardProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/hardproject.dir/src/Socket.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/hardproject.dir/src/Socket.cc.o -MF CMakeFiles/hardproject.dir/src/Socket.cc.o.d -o CMakeFiles/hardproject.dir/src/Socket.cc.o -c /home/dyx/HardProject/src/Socket.cc
+
+CMakeFiles/hardproject.dir/src/Socket.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/hardproject.dir/src/Socket.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dyx/HardProject/src/Socket.cc > CMakeFiles/hardproject.dir/src/Socket.cc.i
+
+CMakeFiles/hardproject.dir/src/Socket.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/hardproject.dir/src/Socket.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dyx/HardProject/src/Socket.cc -o CMakeFiles/hardproject.dir/src/Socket.cc.s
+
+CMakeFiles/hardproject.dir/src/Tcp_server.cc.o: CMakeFiles/hardproject.dir/flags.make
+CMakeFiles/hardproject.dir/src/Tcp_server.cc.o: /home/dyx/HardProject/src/Tcp_server.cc
+CMakeFiles/hardproject.dir/src/Tcp_server.cc.o: CMakeFiles/hardproject.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dyx/HardProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/hardproject.dir/src/Tcp_server.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/hardproject.dir/src/Tcp_server.cc.o -MF CMakeFiles/hardproject.dir/src/Tcp_server.cc.o.d -o CMakeFiles/hardproject.dir/src/Tcp_server.cc.o -c /home/dyx/HardProject/src/Tcp_server.cc
+
+CMakeFiles/hardproject.dir/src/Tcp_server.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/hardproject.dir/src/Tcp_server.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dyx/HardProject/src/Tcp_server.cc > CMakeFiles/hardproject.dir/src/Tcp_server.cc.i
+
+CMakeFiles/hardproject.dir/src/Tcp_server.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/hardproject.dir/src/Tcp_server.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dyx/HardProject/src/Tcp_server.cc -o CMakeFiles/hardproject.dir/src/Tcp_server.cc.s
+
 CMakeFiles/hardproject.dir/src/Thread.cc.o: CMakeFiles/hardproject.dir/flags.make
 CMakeFiles/hardproject.dir/src/Thread.cc.o: /home/dyx/HardProject/src/Thread.cc
 CMakeFiles/hardproject.dir/src/Thread.cc.o: CMakeFiles/hardproject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dyx/HardProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/hardproject.dir/src/Thread.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dyx/HardProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/hardproject.dir/src/Thread.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/hardproject.dir/src/Thread.cc.o -MF CMakeFiles/hardproject.dir/src/Thread.cc.o.d -o CMakeFiles/hardproject.dir/src/Thread.cc.o -c /home/dyx/HardProject/src/Thread.cc
 
 CMakeFiles/hardproject.dir/src/Thread.cc.i: cmake_force
@@ -226,7 +282,7 @@ CMakeFiles/hardproject.dir/src/Thread.cc.s: cmake_force
 CMakeFiles/hardproject.dir/src/Timer.cc.o: CMakeFiles/hardproject.dir/flags.make
 CMakeFiles/hardproject.dir/src/Timer.cc.o: /home/dyx/HardProject/src/Timer.cc
 CMakeFiles/hardproject.dir/src/Timer.cc.o: CMakeFiles/hardproject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dyx/HardProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/hardproject.dir/src/Timer.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dyx/HardProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/hardproject.dir/src/Timer.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/hardproject.dir/src/Timer.cc.o -MF CMakeFiles/hardproject.dir/src/Timer.cc.o.d -o CMakeFiles/hardproject.dir/src/Timer.cc.o -c /home/dyx/HardProject/src/Timer.cc
 
 CMakeFiles/hardproject.dir/src/Timer.cc.i: cmake_force
@@ -240,7 +296,7 @@ CMakeFiles/hardproject.dir/src/Timer.cc.s: cmake_force
 CMakeFiles/hardproject.dir/src/Util.cc.o: CMakeFiles/hardproject.dir/flags.make
 CMakeFiles/hardproject.dir/src/Util.cc.o: /home/dyx/HardProject/src/Util.cc
 CMakeFiles/hardproject.dir/src/Util.cc.o: CMakeFiles/hardproject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dyx/HardProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/hardproject.dir/src/Util.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dyx/HardProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/hardproject.dir/src/Util.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/hardproject.dir/src/Util.cc.o -MF CMakeFiles/hardproject.dir/src/Util.cc.o.d -o CMakeFiles/hardproject.dir/src/Util.cc.o -c /home/dyx/HardProject/src/Util.cc
 
 CMakeFiles/hardproject.dir/src/Util.cc.i: cmake_force
@@ -253,6 +309,8 @@ CMakeFiles/hardproject.dir/src/Util.cc.s: cmake_force
 
 # Object files for target hardproject
 hardproject_OBJECTS = \
+"CMakeFiles/hardproject.dir/src/Address.cc.o" \
+"CMakeFiles/hardproject.dir/src/Bytearray.cc.o" \
 "CMakeFiles/hardproject.dir/src/Config.cc.o" \
 "CMakeFiles/hardproject.dir/src/Env.cc.o" \
 "CMakeFiles/hardproject.dir/src/FdManager.cc.o" \
@@ -263,6 +321,8 @@ hardproject_OBJECTS = \
 "CMakeFiles/hardproject.dir/src/Logdefine.cc.o" \
 "CMakeFiles/hardproject.dir/src/Mutex.cc.o" \
 "CMakeFiles/hardproject.dir/src/Schedule1.cc.o" \
+"CMakeFiles/hardproject.dir/src/Socket.cc.o" \
+"CMakeFiles/hardproject.dir/src/Tcp_server.cc.o" \
 "CMakeFiles/hardproject.dir/src/Thread.cc.o" \
 "CMakeFiles/hardproject.dir/src/Timer.cc.o" \
 "CMakeFiles/hardproject.dir/src/Util.cc.o"
@@ -270,6 +330,8 @@ hardproject_OBJECTS = \
 # External object files for target hardproject
 hardproject_EXTERNAL_OBJECTS =
 
+libhardproject.a: CMakeFiles/hardproject.dir/src/Address.cc.o
+libhardproject.a: CMakeFiles/hardproject.dir/src/Bytearray.cc.o
 libhardproject.a: CMakeFiles/hardproject.dir/src/Config.cc.o
 libhardproject.a: CMakeFiles/hardproject.dir/src/Env.cc.o
 libhardproject.a: CMakeFiles/hardproject.dir/src/FdManager.cc.o
@@ -280,12 +342,14 @@ libhardproject.a: CMakeFiles/hardproject.dir/src/Log.cc.o
 libhardproject.a: CMakeFiles/hardproject.dir/src/Logdefine.cc.o
 libhardproject.a: CMakeFiles/hardproject.dir/src/Mutex.cc.o
 libhardproject.a: CMakeFiles/hardproject.dir/src/Schedule1.cc.o
+libhardproject.a: CMakeFiles/hardproject.dir/src/Socket.cc.o
+libhardproject.a: CMakeFiles/hardproject.dir/src/Tcp_server.cc.o
 libhardproject.a: CMakeFiles/hardproject.dir/src/Thread.cc.o
 libhardproject.a: CMakeFiles/hardproject.dir/src/Timer.cc.o
 libhardproject.a: CMakeFiles/hardproject.dir/src/Util.cc.o
 libhardproject.a: CMakeFiles/hardproject.dir/build.make
 libhardproject.a: CMakeFiles/hardproject.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/dyx/HardProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX static library libhardproject.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/dyx/HardProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Linking CXX static library libhardproject.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/hardproject.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/hardproject.dir/link.txt --verbose=$(VERBOSE)
 

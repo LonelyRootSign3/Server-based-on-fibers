@@ -50,5 +50,18 @@ target_link_libraries(hardproject PUBLIC
 # add_executable(iomanager_test ${CMAKE_SOURCE_DIR}/tests/test_IOManager.cc)
 # target_link_libraries(iomanager_test PRIVATE hardproject)
 
-add_executable(hook_test ${CMAKE_SOURCE_DIR}/tests/test_Hook.cc)
-target_link_libraries(hook_test PRIVATE hardproject)
+# add_executable(hook_test ${CMAKE_SOURCE_DIR}/tests/test_Hook.cc)
+# target_link_libraries(hook_test PRIVATE hardproject)
+
+
+#add_executable(address_test ${CMAKE_SOURCE_DIR}/tests/test_Address.cc)
+#target_link_libraries(address_test PRIVATE hardproject)
+
+# add_executable(socket_test ${CMAKE_SOURCE_DIR}/tests/test_Socket.cc)
+# target_link_libraries(socket_test PRIVATE hardproject)
+
+# add_executable(bytearray_test ${CMAKE_SOURCE_DIR}/tests/test_Bytearray.cc)
+# target_link_libraries(bytearray_test PRIVATE hardproject)
+
+add_executable(tcpserver_test ${CMAKE_SOURCE_DIR}/tests/test_Tcpserver.cc)
+target_link_libraries(tcpserver_test PRIVATE hardproject)

@@ -173,8 +173,8 @@ bool IOManager::cancelEvent(int fd ,EVENT event){
 
     FdContext::MutexType::Lock lock(fd_ctx->mtx);
     if(MY_UNLIKELY(!(fd_ctx->event_type & event))){
-        STREAM_LOG_ERROR(g_logger)<<"没有此事件";
-        MY_ASSERT(!(fd_ctx->event_type & event));
+        // STREAM_LOG_ERROR(g_logger)<<"没有此事件";
+        // MY_ASSERT(!(fd_ctx->event_type & event));
         return false;
     }
     
@@ -209,9 +209,9 @@ bool IOManager::cancelAll(int fd ){
     }
     
     FdContext::MutexType::Lock lock(fd_ctx->mtx);
-    if(MY_UNLIKELY(!(fd_ctx->event_type))){
-        STREAM_LOG_ERROR(g_logger)<<"没有任何事件";
-        MY_ASSERT(!(fd_ctx->event_type));
+    if(!(fd_ctx->event_type)){
+        // STREAM_LOG_ERROR(g_logger)<<"没有任何事件";
+        // MY_ASSERT(!(fd_ctx->event_type));
         return false;
     }
     epoll_event epev;
@@ -266,34 +266,32 @@ void IOManager::Idle(){
                                            delete[] ptr;
                                        });
     while(true){
-        uint64_t next_timeout = 0;
+        uint64_t next_timeout = ~0ull;
         if(CanStop()){
             STREAM_LOG_DEBUG(g_logger)<<" exit idle ";
             break;
         }
-        int cnt = 0;//有多少事件准备好了等待被执行
+        //有多少事件准备好了等待被执行
         //阻塞在epoll_wait里等待
-        do{
-            next_timeout = getNextTimer();//获取下一个定时器的超时时间
-            static const uint64_t timeout = 4000;//默认超时时间为4秒
-            if(next_timeout != ~0ull){
-                next_timeout = (int)next_timeout > timeout ? timeout : next_timeout;
+        int rt = 0;
+        do {
+            next_timeout = getNextTimer();//检查有没有定时任务
+            static const int MAX_TIMEOUT = 1000 * 60 * 1;
+            if(next_timeout != ~0ull) {
+                next_timeout = (int)next_timeout > MAX_TIMEOUT
+                                ? MAX_TIMEOUT : next_timeout;
             } else {
-                next_timeout = timeout;
+                next_timeout = MAX_TIMEOUT;
             }
-            STREAM_LOG_DEBUG(g_logger)<<"io idle epoll_wait timeout="<<next_timeout;
-            cnt = epoll_wait(m_epfd,epptr,MAXEVENTS,(int)next_timeout);//等待next_timeout后若无时间，直接返回
-            if(cnt < 0){
-                STREAM_LOG_ERROR(g_logger)<<"epoll_wait error";
-                continue;
-            }
-
-            if(cnt || next_timeout == 0){    
+            rt = epoll_wait(m_epfd, epptr, MAXEVENTS, (int)next_timeout);
+            if(rt < 0 && errno == EINTR) {
+            } else {
+                if (rt < 0) { // 记录一下除了 EINTR 以外的异常
+                    STREAM_LOG_ERROR(g_logger) << "epoll_wait error, errno=" << errno;
+                }
                 break;
             }
-            std::cout<<"io idle epoll_wait --- "<<std::endl;
-            // sleep(1);
-        }while(true);
+        } while(true);
 
         //获取所有过期的定时器回调
         std::vector<std::function<void()>> cbs;
@@ -304,7 +302,7 @@ void IOManager::Idle(){
         }
 
         //有事件准备好了
-        for(size_t i = 0;i<cnt;i++){
+        for(size_t i = 0;i<rt;i++){
             //若为事件触发句柄
             if(epptr[i].data.fd == m_eventfd_notify){
                 uint64_t readbuf;
@@ -316,8 +314,8 @@ void IOManager::Idle(){
             
             FdContext *fd_ctx = (FdContext *)epptr[i].data.ptr;
             FdContext::MutexType::Lock lock(fd_ctx->mtx);
-            if(epptr[i].events & (EPOLLERR | EPOLLHUP)){
-                epptr[i].events |= (EPOLLERR | EPOLLHUP) & fd_ctx->event_type;
+            if(epptr[i].events & (EPOLLERR | EPOLLHUP)){//将异常事件转化为读写事件
+                epptr[i].events |= (EPOLLIN | EPOLLOUT) & fd_ctx->event_type;
             }
 
             //判断epoll返回的事件是否是用户所关注的事件
@@ -353,7 +351,8 @@ void IOManager::Idle(){
             }
         }
         // sleep(1);
-        break;
+        // break;
+        Fiber::YieldToHold();
     }
 }
 // 重置socket句柄上下文的容器大小

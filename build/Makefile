@@ -130,17 +130,65 @@ hardproject/fast:
 .PHONY : hardproject/fast
 
 #=============================================================================
-# Target rules for targets named hook_test
+# Target rules for targets named tcpserver_test
 
 # Build rule for target.
-hook_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 hook_test
-.PHONY : hook_test
+tcpserver_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tcpserver_test
+.PHONY : tcpserver_test
 
 # fast build rule for target.
-hook_test/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hook_test.dir/build.make CMakeFiles/hook_test.dir/build
-.PHONY : hook_test/fast
+tcpserver_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcpserver_test.dir/build.make CMakeFiles/tcpserver_test.dir/build
+.PHONY : tcpserver_test/fast
+
+src/Address.o: src/Address.cc.o
+.PHONY : src/Address.o
+
+# target to build an object file
+src/Address.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Address.cc.o
+.PHONY : src/Address.cc.o
+
+src/Address.i: src/Address.cc.i
+.PHONY : src/Address.i
+
+# target to preprocess a source file
+src/Address.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Address.cc.i
+.PHONY : src/Address.cc.i
+
+src/Address.s: src/Address.cc.s
+.PHONY : src/Address.s
+
+# target to generate assembly for a file
+src/Address.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Address.cc.s
+.PHONY : src/Address.cc.s
+
+src/Bytearray.o: src/Bytearray.cc.o
+.PHONY : src/Bytearray.o
+
+# target to build an object file
+src/Bytearray.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Bytearray.cc.o
+.PHONY : src/Bytearray.cc.o
+
+src/Bytearray.i: src/Bytearray.cc.i
+.PHONY : src/Bytearray.i
+
+# target to preprocess a source file
+src/Bytearray.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Bytearray.cc.i
+.PHONY : src/Bytearray.cc.i
+
+src/Bytearray.s: src/Bytearray.cc.s
+.PHONY : src/Bytearray.s
+
+# target to generate assembly for a file
+src/Bytearray.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Bytearray.cc.s
+.PHONY : src/Bytearray.cc.s
 
 src/Config.o: src/Config.cc.o
 .PHONY : src/Config.o
@@ -382,6 +430,54 @@ src/Schedule1.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Schedule1.cc.s
 .PHONY : src/Schedule1.cc.s
 
+src/Socket.o: src/Socket.cc.o
+.PHONY : src/Socket.o
+
+# target to build an object file
+src/Socket.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Socket.cc.o
+.PHONY : src/Socket.cc.o
+
+src/Socket.i: src/Socket.cc.i
+.PHONY : src/Socket.i
+
+# target to preprocess a source file
+src/Socket.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Socket.cc.i
+.PHONY : src/Socket.cc.i
+
+src/Socket.s: src/Socket.cc.s
+.PHONY : src/Socket.s
+
+# target to generate assembly for a file
+src/Socket.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Socket.cc.s
+.PHONY : src/Socket.cc.s
+
+src/Tcp_server.o: src/Tcp_server.cc.o
+.PHONY : src/Tcp_server.o
+
+# target to build an object file
+src/Tcp_server.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Tcp_server.cc.o
+.PHONY : src/Tcp_server.cc.o
+
+src/Tcp_server.i: src/Tcp_server.cc.i
+.PHONY : src/Tcp_server.i
+
+# target to preprocess a source file
+src/Tcp_server.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Tcp_server.cc.i
+.PHONY : src/Tcp_server.cc.i
+
+src/Tcp_server.s: src/Tcp_server.cc.s
+.PHONY : src/Tcp_server.s
+
+# target to generate assembly for a file
+src/Tcp_server.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Tcp_server.cc.s
+.PHONY : src/Tcp_server.cc.s
+
 src/Thread.o: src/Thread.cc.o
 .PHONY : src/Thread.o
 
@@ -454,29 +550,29 @@ src/Util.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Util.cc.s
 .PHONY : src/Util.cc.s
 
-tests/test_Hook.o: tests/test_Hook.cc.o
-.PHONY : tests/test_Hook.o
+tests/test_Tcpserver.o: tests/test_Tcpserver.cc.o
+.PHONY : tests/test_Tcpserver.o
 
 # target to build an object file
-tests/test_Hook.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hook_test.dir/build.make CMakeFiles/hook_test.dir/tests/test_Hook.cc.o
-.PHONY : tests/test_Hook.cc.o
+tests/test_Tcpserver.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcpserver_test.dir/build.make CMakeFiles/tcpserver_test.dir/tests/test_Tcpserver.cc.o
+.PHONY : tests/test_Tcpserver.cc.o
 
-tests/test_Hook.i: tests/test_Hook.cc.i
-.PHONY : tests/test_Hook.i
+tests/test_Tcpserver.i: tests/test_Tcpserver.cc.i
+.PHONY : tests/test_Tcpserver.i
 
 # target to preprocess a source file
-tests/test_Hook.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hook_test.dir/build.make CMakeFiles/hook_test.dir/tests/test_Hook.cc.i
-.PHONY : tests/test_Hook.cc.i
+tests/test_Tcpserver.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcpserver_test.dir/build.make CMakeFiles/tcpserver_test.dir/tests/test_Tcpserver.cc.i
+.PHONY : tests/test_Tcpserver.cc.i
 
-tests/test_Hook.s: tests/test_Hook.cc.s
-.PHONY : tests/test_Hook.s
+tests/test_Tcpserver.s: tests/test_Tcpserver.cc.s
+.PHONY : tests/test_Tcpserver.s
 
 # target to generate assembly for a file
-tests/test_Hook.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hook_test.dir/build.make CMakeFiles/hook_test.dir/tests/test_Hook.cc.s
-.PHONY : tests/test_Hook.cc.s
+tests/test_Tcpserver.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcpserver_test.dir/build.make CMakeFiles/tcpserver_test.dir/tests/test_Tcpserver.cc.s
+.PHONY : tests/test_Tcpserver.cc.s
 
 # Help Target
 help:
@@ -487,7 +583,13 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... hardproject"
-	@echo "... hook_test"
+	@echo "... tcpserver_test"
+	@echo "... src/Address.o"
+	@echo "... src/Address.i"
+	@echo "... src/Address.s"
+	@echo "... src/Bytearray.o"
+	@echo "... src/Bytearray.i"
+	@echo "... src/Bytearray.s"
 	@echo "... src/Config.o"
 	@echo "... src/Config.i"
 	@echo "... src/Config.s"
@@ -518,6 +620,12 @@ help:
 	@echo "... src/Schedule1.o"
 	@echo "... src/Schedule1.i"
 	@echo "... src/Schedule1.s"
+	@echo "... src/Socket.o"
+	@echo "... src/Socket.i"
+	@echo "... src/Socket.s"
+	@echo "... src/Tcp_server.o"
+	@echo "... src/Tcp_server.i"
+	@echo "... src/Tcp_server.s"
 	@echo "... src/Thread.o"
 	@echo "... src/Thread.i"
 	@echo "... src/Thread.s"
@@ -527,9 +635,9 @@ help:
 	@echo "... src/Util.o"
 	@echo "... src/Util.i"
 	@echo "... src/Util.s"
-	@echo "... tests/test_Hook.o"
-	@echo "... tests/test_Hook.i"
-	@echo "... tests/test_Hook.s"
+	@echo "... tests/test_Tcpserver.o"
+	@echo "... tests/test_Tcpserver.i"
+	@echo "... tests/test_Tcpserver.s"
 .PHONY : help
 
 

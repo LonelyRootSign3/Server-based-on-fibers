@@ -1,5 +1,6 @@
 #include "Util.h"
 #include <sys/time.h>
+#include <sys/stat.h>
 #include <cstring>
 namespace DYX{
     static DYX::Logger::Ptr g_logger = GET_NAME_LOGGER("system");  
@@ -85,6 +86,22 @@ namespace DYX{
             return 0;
         }
         return mktime(&t);
+    }
+
+
+    static int __lstat(const char* file, struct stat* st = nullptr) {
+        struct stat lst;
+        int ret = lstat(file, &lst);
+        if(st) {
+            *st = lst;
+        }
+        return ret;
+    }
+    bool Unlink(const std::string& filename, bool exist = false){
+        if(!exist && __lstat(filename.c_str())) {
+            return true;
+        }
+        return ::unlink(filename.c_str()) == 0;
     }
 
 }

@@ -14,9 +14,9 @@ bool Timer::Compare::operator()(const Timer::Ptr &t1,const Timer::Ptr &t2) const
     }
 
     if(t1->m_next == t2->m_next){
-        return t1.get() > t2.get();
+        return t1.get() < t2.get();
     }
-    return t1->m_next > t2->m_next;
+    return t1->m_next < t2->m_next;
 }
 
 Timer::Timer(uint64_t next) : m_next(next){}
@@ -81,19 +81,6 @@ Timer::Ptr TimerManager::addTimer(uint64_t ms,std::function<void()> cb,bool repe
     addtimer(timer,lock);
     return timer;
 }
-
-static void Condition(std::function<void()> cb,std::weak_ptr<void> weak_cond){
-    auto it = weak_cond.lock();
-    if(it){
-        cb();
-    }
-}
-Timer::Ptr TimerManager::addConditionTimer(uint64_t ms,std::function<void()> cb,
-                    std::weak_ptr<void> weak_cond,bool repeat){
-    return addTimer(ms,std::bind(&Condition,cb,weak_cond),repeat);
-}
-
-
 void TimerManager::addtimer(Timer::Ptr timer,RWMutexType::WLock &lock){
     auto it = m_timers.insert(timer).first;
     bool need_notify = (it == m_timers.begin()) && !m_notify;
@@ -105,6 +92,16 @@ void TimerManager::addtimer(Timer::Ptr timer,RWMutexType::WLock &lock){
     if(need_notify){
         Haslatest();
     }
+}
+static void Condition(std::function<void()> cb,std::weak_ptr<void> weak_cond){
+    auto it = weak_cond.lock();
+    if(it){
+        cb();
+    }
+}
+Timer::Ptr TimerManager::addConditionTimer(uint64_t ms,std::function<void()> cb,
+                    std::weak_ptr<void> weak_cond,bool repeat){
+    return addTimer(ms,std::bind(&Condition,cb,weak_cond),repeat);
 }
 
 uint64_t TimerManager::getNextTimer(){

@@ -53,7 +53,7 @@ void Scheduler::Run(){
     //子线程需要在内部构造调度协程
     if( DYX::GetThreadId() != m_rootThreadId ){//线程池里的子线程
         MY_ASSERT(Scheduler::GetThis() == nullptr);//默认子线程开始没有绑定调度器
-        t_scheduler = this;//每个线程绑定自己的调度器
+        t_scheduler = this;//每个子线程绑定主线程的调度器
         t_schedule_fiber_ptr = Fiber::BuildScheduleFiber();//每个线程绑定自己的调度协程
         Fiber::SetScheduleFiber(t_schedule_fiber_ptr.get());//每个线程绑定自己的调度协程
 

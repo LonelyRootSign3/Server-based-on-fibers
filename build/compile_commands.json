@@ -1,6 +1,18 @@
 [
 {
   "directory": "/home/dyx/HardProject/build",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Address.cc.o -c /home/dyx/HardProject/src/Address.cc",
+  "file": "/home/dyx/HardProject/src/Address.cc",
+  "output": "CMakeFiles/hardproject.dir/src/Address.cc.o"
+},
+{
+  "directory": "/home/dyx/HardProject/build",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Bytearray.cc.o -c /home/dyx/HardProject/src/Bytearray.cc",
+  "file": "/home/dyx/HardProject/src/Bytearray.cc",
+  "output": "CMakeFiles/hardproject.dir/src/Bytearray.cc.o"
+},
+{
+  "directory": "/home/dyx/HardProject/build",
   "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Config.cc.o -c /home/dyx/HardProject/src/Config.cc",
   "file": "/home/dyx/HardProject/src/Config.cc",
   "output": "CMakeFiles/hardproject.dir/src/Config.cc.o"
@@ -61,6 +73,18 @@
 },
 {
   "directory": "/home/dyx/HardProject/build",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Socket.cc.o -c /home/dyx/HardProject/src/Socket.cc",
+  "file": "/home/dyx/HardProject/src/Socket.cc",
+  "output": "CMakeFiles/hardproject.dir/src/Socket.cc.o"
+},
+{
+  "directory": "/home/dyx/HardProject/build",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Tcp_server.cc.o -c /home/dyx/HardProject/src/Tcp_server.cc",
+  "file": "/home/dyx/HardProject/src/Tcp_server.cc",
+  "output": "CMakeFiles/hardproject.dir/src/Tcp_server.cc.o"
+},
+{
+  "directory": "/home/dyx/HardProject/build",
   "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Thread.cc.o -c /home/dyx/HardProject/src/Thread.cc",
   "file": "/home/dyx/HardProject/src/Thread.cc",
   "output": "CMakeFiles/hardproject.dir/src/Thread.cc.o"
@@ -79,8 +103,8 @@
 },
 {
   "directory": "/home/dyx/HardProject/build",
-  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hook_test.dir/tests/test_Hook.cc.o -c /home/dyx/HardProject/tests/test_Hook.cc",
-  "file": "/home/dyx/HardProject/tests/test_Hook.cc",
-  "output": "CMakeFiles/hook_test.dir/tests/test_Hook.cc.o"
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/tcpserver_test.dir/tests/test_Tcpserver.cc.o -c /home/dyx/HardProject/tests/test_Tcpserver.cc",
+  "file": "/home/dyx/HardProject/tests/test_Tcpserver.cc",
+  "output": "CMakeFiles/tcpserver_test.dir/tests/test_Tcpserver.cc.o"
 }
 ]

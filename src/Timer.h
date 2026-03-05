@@ -25,7 +25,7 @@ private:
         bool operator()(const Timer::Ptr &t1,const Timer::Ptr &t2) const;
     };
 private:  
-    uint64_t m_ms = 0;//定时器时间间隔(毫秒)
+    uint64_t m_ms = 0;//定时器时间间隔(毫秒)，repeat为true时需要它
     uint64_t m_next = 0;//下一次触发时间(毫秒) 通常为当前时间+m_ms    
     bool m_repeat = false;//是否重复执行(周期性任务)
     std::function<void()> m_cb;//定时器回调函数

@@ -8,12 +8,12 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
-
+#include <sys/un.h>
 namespace DYX{
 
 class IPAddress;
 
-class Address {
+class Address { 
 public:
     using Ptr = std::shared_ptr<Address>;
     virtual ~Address() {}
@@ -86,7 +86,7 @@ public:
     virtual IPAddress::Ptr broadcastAddress(uint32_t prefix_len) = 0;
 
     // 计算网络地址
-    virtual IPAddress::Ptr networdAddress(uint32_t prefix_len) = 0;
+    virtual IPAddress::Ptr networkAddress(uint32_t prefix_len) = 0;
 
     // 计算子网掩码
     virtual IPAddress::Ptr subnetMask(uint32_t prefix_len) = 0;
@@ -111,7 +111,9 @@ public:
     sockaddr* getAddr() override;
     socklen_t getAddrLen() const override;
     std::ostream& insert(std::ostream& os) const override;
-
+private:
+    sockaddr_un m_addr;
+    socklen_t m_length;
 };
 
 class UnknownAddress : public Address {
@@ -123,6 +125,8 @@ public:
     sockaddr* getAddr() override;
     socklen_t getAddrLen() const override;
     std::ostream& insert(std::ostream& os) const override;
+private:
+    sockaddr m_addr;
 };
 
 
@@ -145,12 +149,13 @@ public:
     std::ostream& insert(std::ostream& os) const override;
 
     IPAddress::Ptr broadcastAddress(uint32_t prefix_len) override;
-    IPAddress::Ptr networdAddress(uint32_t prefix_len) override;
+    IPAddress::Ptr networkAddress(uint32_t prefix_len) override;
     IPAddress::Ptr subnetMask(uint32_t prefix_len) override;
 
     uint32_t getPort() const override;
     void setPort(uint16_t v) override;
-
+private:
+    sockaddr_in m_addr;
 };
 
 class IPv6Address : public IPAddress {
@@ -171,15 +176,17 @@ public:
     std::ostream& insert(std::ostream& os) const override;
 
     IPAddress::Ptr broadcastAddress(uint32_t prefix_len) override;
-    IPAddress::Ptr networdAddress(uint32_t prefix_len) override;
+    IPAddress::Ptr networkAddress(uint32_t prefix_len) override;
     IPAddress::Ptr subnetMask(uint32_t prefix_len) override;
 
     uint32_t getPort() const override;
     void setPort(uint16_t v) override;
-
+private:
+    sockaddr_in6 m_addr;
 
 };
-
+//流式输出Address
+std::ostream& operator<<(std::ostream& os, const Address& addr);
 
   
 }

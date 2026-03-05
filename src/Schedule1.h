@@ -54,7 +54,7 @@ private:
     struct Task {
         Fiber::Ptr          fiberptr;   // 协程
         std::function<void()> cb;       // 回调
-        pid_t               thread_id = -1;
+        pid_t               thread_id = -1;//指定线程执行
 
         Task() = default;
 
