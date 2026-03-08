@@ -73,7 +73,7 @@ namespace http{
   XX(510, NOT_EXTENDED,                    Not Extended)                    \
   XX(511, NETWORK_AUTHENTICATION_REQUIRED, Network Authentication Required) \
 // 状态码枚举
-enum http_status
+enum class http_status
 {
 #define XX(num, name, string) HTTP_STATUS_##name = num,
   HTTP_STATUS_MAP(XX)
@@ -128,53 +128,113 @@ enum http_status
 
 
 // 请求方法枚举
-enum http_method
+enum class http_method
 {
 #define XX(num, name, string) HTTP_##name = num,
   HTTP_METHOD_MAP(XX)
 #undef XX
+    INVALID_METHOD
 };
 
 //Src: 源类型，Tar: 目标类型
-template<class Tar,class Src>
-struct LexicalCast{//类型转换模板类 ->仿函数
-    Tar operator()(const Src &src){
-        std::stringstream ss;
-        ss<<src;// 把源类型写入到流中
-        Tar tar;
-        ss>>tar;// 从流中读取到目标类型
+// template<class Tar,class Src>
+// struct LexicalCast{//类型转换模板类 ->仿函数
+//     Tar operator()(const Src &src){
+//         std::stringstream ss;
+//         ss<<src;// 把源类型写入到流中
+//         Tar tar;
+//         ss>>tar;// 从流中读取到目标类型
 
-        // 检查是否转换完整（例如 "123abc" 转 int 时会有残余）
-        if (!ss.eof() || ss.fail()) {
-            throw std::invalid_argument("LexicalCast: conversion failed");
-        }
-        return tar; 
-    }
+//         // 检查是否转换完整（例如 "123abc" 转 int 时会有残余）
+//         if (!ss.eof() || ss.fail()) {
+//             throw std::invalid_argument("LexicalCast: conversion failed");
+//         }
+//         return tar; 
+//     }
  
-}; 
+// }; 
 // 针对 string -> string 的特化（避免额外开销）
-template<>  
-struct LexicalCast<std::string, std::string> {
-    std::string operator()(const std::string& v) {
-        return v;
+// template<>  
+// struct LexicalCast<std::string, std::string> {
+//     std::string operator()(const std::string& v) {
+//         return v;
+//     }
+// };
+
+template<class Tar, class Src>
+Tar lexical_cast(const Src& src) {
+    std::stringstream ss;
+    
+    // 1. 将源数据写入流
+    if (!(ss << src)) {
+        throw std::invalid_argument("LexicalCast: source write failed");
     }
-};
+
+    Tar tar;
+    // 2. 从流中读取目标类型
+    // 使用 std::ws 忽略末尾空白符，确保数据被完整转换
+    if (!(ss >> tar) || !(ss >> std::ws && ss.eof())) {
+        throw std::invalid_argument("LexicalCast: conversion failed or incomplete");
+    }
+
+    return tar;
+}
+
+template<>
+inline std::string lexical_cast<std::string,std::string>(const std::string& v) {
+    return v;
+}
 
 
+template<typename MapType,typename T>
+bool checkgetAs(MapType m ,const std::string &key ,T &v,const T &def = T()){
+    auto it = m.find(key);
+    if(it == m.end()){
+        return false;
+    }
+    try{
+        v = lexical_cast<T>(it->second);
+        return true;
+    }catch(...){
+        v = def;
+    }
+    return false;
+}
+
+template<typename MapType,typename T>
+T getAs(MapType m ,const std::string &key ,T v,const T &def = T()){
+    auto it = m.find(key);
+    if(it == m.end()){ return def;}
+    try{
+        return lexical_cast<T>(it->second);
+    }catch(...){}
+    return def;
+}
 
 http_method StringToHttpMethod(const std::string& m); 
 http_method CharsToHttpMethod(const char* m);
-const char *HttpMethodToString(http_method& m);
-const char *HttpStatusToString(http_status& s);
+const char *HttpMethodToString(const http_method& m);
+const char *HttpStatusToString(const http_status& s);
 
 struct CompareIngnoreCase {
-    bool operator()(const std::string &lhs ,const std::string &rhs);
+    bool operator()(const std::string &lhs ,const std::string &rhs) const;
 };
+
+
+class HttpResponse;
 
 class HttpRequest{
 public:
     using MapType = std::map<std::string, std::string, CompareIngnoreCase>;// 头字段、参数、Cookie 等的映射表类型
     using Ptr = std::shared_ptr<HttpRequest>;
+    HttpRequest(uint8_t version = 0x11, bool close = true);
+    std::shared_ptr<HttpResponse> createHttpResponse();
+    void init();
+    void initParamsAndCookies();
+    void initQueryParam();
+    void initBodyParam();
+    void initCookies();
+
 //getter接口
     http_method getMethod() const { return m_method; }
     uint8_t getVersion() const { return m_version; }
@@ -226,6 +286,48 @@ public:
 
     bool hasCookie(const std::string& key,
                   std::string* val = nullptr);
+//泛型获取接口
+template<class T>
+bool checkGetHeaderAs(const std::string &key ,T &val ,const T &def = T()){
+    return checkgetAs(m_headers,key,val,def);
+}
+
+template<class T>
+T getHeaderAs(const std::string &key ,const T &def = T()){
+    return getAs(m_headers,key,def);
+}
+
+template<class T>
+bool checkGetParamAs(const std::string &key ,T &val ,const T &def = T()){
+    initQueryParam();
+    initBodyParam();
+    return checkgetAs(m_params,key,val,def);
+}
+
+template<class T>
+T getParamAs(const std::string &key ,const T &def = T()){
+    initQueryParam();
+    initBodyParam();
+    return getAs(m_params,key,def);
+}
+
+template<class T>
+bool checkGetCookieAs(const std::string &key ,T &val ,const T &def = T()){
+    initCookies();
+    return checkgetAs(m_cookies,key,val,def);
+}
+
+template<class T>
+T getCookieAs(const std::string &key ,const T &def = T()){
+    initCookies();
+    return getAs(m_cookies,key,def);
+}
+
+//格式化接口打印
+
+std::ostream &dump(std::ostream &os) const;
+std::string toString() const;
+
 private:
     http_method m_method;// 请求方法
     std::string m_path;  //请求路径
@@ -242,7 +344,7 @@ private:
     bool m_websocket;// 是否是websocket连接(双向同时可以发信息，不只是单一请求应答)
 
     uint8_t m_parserParamFlag;//延迟解析参数 0x1-query 已解析   0x2-body 已解析   0x4-cookie 已解析，避免重复解析
-    MapType m_params;// 查询参数
+    MapType m_params;// 各种参数（查询参数、表单参数）
 
 };
 
@@ -251,6 +353,9 @@ class HttpResponse{
 public:
     using MapType = std::map<std::string, std::string, CompareIngnoreCase>;// 响应报头
     using Ptr = std::shared_ptr<HttpResponse>;
+
+    HttpResponse(uint8_t version = 0x11, bool close = true);
+
 //getter接口
     http_status getStatus() const { return m_status; }
     uint8_t getVersion() const { return m_version; }
@@ -282,6 +387,23 @@ public:
                bool secure = false);
     void setRedirect(const std::string& uri);
 
+
+//泛型获取接口
+template<class T>
+bool checkGetHeaderAs(const std::string &key ,T &val ,const T &def = T()){
+    return checkgetAs(m_headers,key,val,def);
+}
+
+template<class T>
+T getHeaderAs(const std::string &key ,const T &def = T()){
+    return getAs(m_headers,key,def);
+}
+
+//格式化打印
+
+std::ostream &dump(std::ostream &os) const;
+std::string toString() const;
+
 private:
     uint8_t m_version;// http版本
     http_status m_status;// 响应状态码
@@ -294,9 +416,11 @@ private:
 
     bool m_close;// 是否是短连接（自动关闭）
     bool m_websocket;// 是否是websocket连接(双向同时可以发信息，不只是单一请求应答)
-
-
 };
+
+std::ostream &operator<<(std::ostream &os, const HttpRequest &req);
+std::ostream &operator<<(std::ostream &os, const HttpResponse &rsp);
+
 
 }
 }

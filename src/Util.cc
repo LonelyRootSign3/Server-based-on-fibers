@@ -97,11 +97,139 @@ namespace DYX{
         }
         return ret;
     }
-    bool Unlink(const std::string& filename, bool exist = false){
+    bool Unlink(const std::string& filename, bool exist){
         if(!exist && __lstat(filename.c_str())) {
             return true;
         }
         return ::unlink(filename.c_str()) == 0;
     }
+
+    std::string Trim(const std::string& str, const std::string& delimit){
+        size_t start = str.find_first_not_of(delimit);
+        if(start == std::string::npos) {
+            return "";
+        }
+        size_t end = str.find_last_not_of(delimit);
+        return str.substr(start, end - start + 1);
+    }
+    std::string TrimLeft(const std::string& str, const std::string& delimit){
+        size_t start = str.find_first_not_of(delimit);
+        if(start == std::string::npos) {
+            return "";
+        }
+        return str.substr(start);
+    }
+    std::string TrimRight(const std::string& str, const std::string& delimit){
+        size_t end = str.find_last_not_of(delimit);
+        if(end == std::string::npos) {
+            return "";
+        }
+        return str.substr(0, end + 1);
+    }
+
+    static const char uri_chars[256] = {//需要进行url编码的字符（下标对应ASCII码）
+        /* 0 */
+        0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 1, 1, 0,
+        1, 1, 1, 1, 1, 1, 1, 1,   1, 1, 0, 0, 0, 1, 0, 0,
+        /* 64 */
+        0, 1, 1, 1, 1, 1, 1, 1,   1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1,   1, 1, 1, 0, 0, 0, 0, 1,
+        0, 1, 1, 1, 1, 1, 1, 1,   1, 1, 1, 1, 1, 1, 1, 1, 
+        1, 1, 1, 1, 1, 1, 1, 1,   1, 1, 1, 0, 0, 0, 1, 0,
+        /* 128 */
+        0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0,
+        /* 192 */
+        0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0,
+    };
+
+    static const char xdigit_chars[256] = {// 把 字符型16进制数 所对应的ASCII码值转化成16进制 的表
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,1,2,3,4,5,6,7,8,9,0,0,0,0,0,0,
+        0,10,11,12,13,14,15,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,10,11,12,13,14,15,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+    };
+
+#define IS_URL_CHAR(c) (uri_chars[(unsigned char)(c)] == 1)
+
+    std::string UrlEncode(const std::string& str, bool space_as_plus){
+        static const char *hex = "0123456789ABCDEF";
+        size_t len = str.size();
+        size_t pos = 0;
+        while(pos < len && IS_URL_CHAR(str[pos])){
+            pos++;
+        }
+        if(pos == len) return str;
+        std::string ret;
+        ret.reserve(str.size() * 1.2);//先预开辟1.2倍空间
+        ret.append(str, 0, pos);//将pos之前的字符直接append到ret中
+        for(; pos < len; pos++){
+            if(IS_URL_CHAR(str[pos])){
+                ret += str[pos];
+            }else{
+                if(str[pos] == ' ' && space_as_plus){
+                    ret += '+';
+                }else{
+                    ret += '%';
+                    ret += hex[(unsigned char)(str[pos]) >> 4];
+                    ret += hex[(unsigned char)(str[pos]) & 0x0F];
+                }
+            }
+        }
+        return ret;
+    }
+
+    std::string UrlDecode(const std::string& str, bool space_as_plus){
+        size_t len = str.size();
+        size_t pos = 0;
+        while(pos < len){
+            if(str[pos] == '%' || (str[pos] == '+' && space_as_plus)) break;
+            pos++;
+        }
+        if(pos == len) return str;
+        std::string ret;
+        ret.reserve(str.size());//先预开辟空间
+        ret.append(str, 0, pos);//将pos之前的字符直接append到ret中
+
+        while(pos < len){
+            if(str[pos] == '%' && (pos + 2) < len 
+                        && std::isxdigit(static_cast<unsigned char>(str[pos + 1]) 
+                        && std::isxdigit(static_cast<unsigned char>(str[pos + 2])))){
+                // 使用查表法合并高低位
+                char high = xdigit_chars[static_cast<unsigned char>(str[pos + 1])];
+                char low  = xdigit_chars[static_cast<unsigned char>(str[pos + 2])];
+                ret.push_back(static_cast<char>((high << 4) | low));
+                pos += 3; // 跳过已处理的 "%XX"
+            }else if(str[pos] == '+' && space_as_plus){
+                ret.push_back(' ');
+                pos++;
+            }else{
+                ret += str[pos];
+                pos++;
+            }
+        }
+        return ret;
+
+    }
+
 
 }

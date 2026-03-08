@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.14)
-project(HardProject CXX)
+project(HardProject C CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
@@ -14,12 +14,17 @@ find_package(Threads REQUIRED)   # 找到 pthread
 # 2) 收集源码并生成库
 file(GLOB SRC_FILES
   ${CMAKE_SOURCE_DIR}/src/*.cc
-  # ${CMAKE_SOURCE_DIR}/src/Util/*.cc
+  ${CMAKE_SOURCE_DIR}/src/Http/*.cc
+  ${CMAKE_SOURCE_DIR}/src/Http/*.c
+  ${CMAKE_SOURCE_DIR}/src/Stream/*.cc
 )
 
 add_library(hardproject ${SRC_FILES})
 target_include_directories(hardproject
   PUBLIC ${CMAKE_SOURCE_DIR}/src      # 你的项目头文件
+  PUBLIC ${CMAKE_SOURCE_DIR}/src/Http
+  PUBLIC ${CMAKE_SOURCE_DIR}/src/Stream
+
 )
 # 3) 把 yaml-cpp 作为 hardproject 的 PUBLIC 依赖（可执行程序会自动继承）
 target_link_libraries(hardproject PUBLIC 
@@ -63,5 +68,18 @@ target_link_libraries(hardproject PUBLIC
 # add_executable(bytearray_test ${CMAKE_SOURCE_DIR}/tests/test_Bytearray.cc)
 # target_link_libraries(bytearray_test PRIVATE hardproject)
 
-add_executable(tcpserver_test ${CMAKE_SOURCE_DIR}/tests/test_Tcpserver.cc)
-target_link_libraries(tcpserver_test PRIVATE hardproject)
+# add_executable(tcpserver_test ${CMAKE_SOURCE_DIR}/tests/test_Tcpserver.cc)
+# target_link_libraries(tcpserver_test PRIVATE hardproject)
+
+# add_executable(echoserver_test ${CMAKE_SOURCE_DIR}/example/echo_server.cc)
+# target_link_libraries(echoserver_test PRIVATE hardproject)
+
+# add_executable(http_test ${CMAKE_SOURCE_DIR}/tests/test_Http.cc)
+# target_link_libraries(http_test PRIVATE hardproject)
+
+# add_executable(http_parser_test ${CMAKE_SOURCE_DIR}/tests/test_HttpParser.cc)
+# target_link_libraries(http_parser_test PRIVATE hardproject)
+
+add_executable(http_server_test ${CMAKE_SOURCE_DIR}/tests/test_HttpServer.cc)
+target_link_libraries(http_server_test PRIVATE hardproject)
+

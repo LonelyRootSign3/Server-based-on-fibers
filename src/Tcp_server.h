@@ -126,7 +126,7 @@ public:
     std::string getName() const { return m_name; }
 
     void setRecvTimeout( uint64_t v) { m_recvTimeout = v;}
-    void setName(const std::string &name) { m_name = name;}
+    virtual void setName(const std::string &name) { m_name = name;}
     void setConfig(TcpServerConf::Ptr v) { m_config = v;}
     void setConfig(const TcpServerConf &v);
 

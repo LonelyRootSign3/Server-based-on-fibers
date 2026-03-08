@@ -65,7 +65,7 @@ IOManager::IOManager(int threads,bool use_main,const std::string &name)
         Start();
 }
 IOManager::~IOManager(){
-    // std::cout<<"~iomanager"<<std::endl;
+    std::cout<<"~iomanager"<<std::endl;
     Stop();
     close(m_epfd);
     close(m_eventfd_notify);

@@ -13,6 +13,16 @@ file(REMOVE_RECURSE
   "CMakeFiles/hardproject.dir/src/Fiber1.cc.o.d"
   "CMakeFiles/hardproject.dir/src/Hook.cc.o"
   "CMakeFiles/hardproject.dir/src/Hook.cc.o.d"
+  "CMakeFiles/hardproject.dir/src/Http/Http.cc.o"
+  "CMakeFiles/hardproject.dir/src/Http/Http.cc.o.d"
+  "CMakeFiles/hardproject.dir/src/Http/HttpParser.cc.o"
+  "CMakeFiles/hardproject.dir/src/Http/HttpParser.cc.o.d"
+  "CMakeFiles/hardproject.dir/src/Http/HttpServer.cc.o"
+  "CMakeFiles/hardproject.dir/src/Http/HttpServer.cc.o.d"
+  "CMakeFiles/hardproject.dir/src/Http/HttpSession.cc.o"
+  "CMakeFiles/hardproject.dir/src/Http/HttpSession.cc.o.d"
+  "CMakeFiles/hardproject.dir/src/Http/picohttpparser.c.o"
+  "CMakeFiles/hardproject.dir/src/Http/picohttpparser.c.o.d"
   "CMakeFiles/hardproject.dir/src/IOManager.cc.o"
   "CMakeFiles/hardproject.dir/src/IOManager.cc.o.d"
   "CMakeFiles/hardproject.dir/src/Log.cc.o"
@@ -25,6 +35,10 @@ file(REMOVE_RECURSE
   "CMakeFiles/hardproject.dir/src/Schedule1.cc.o.d"
   "CMakeFiles/hardproject.dir/src/Socket.cc.o"
   "CMakeFiles/hardproject.dir/src/Socket.cc.o.d"
+  "CMakeFiles/hardproject.dir/src/Stream.cc.o"
+  "CMakeFiles/hardproject.dir/src/Stream.cc.o.d"
+  "CMakeFiles/hardproject.dir/src/Stream/SocketStream.cc.o"
+  "CMakeFiles/hardproject.dir/src/Stream/SocketStream.cc.o.d"
   "CMakeFiles/hardproject.dir/src/Tcp_server.cc.o"
   "CMakeFiles/hardproject.dir/src/Tcp_server.cc.o.d"
   "CMakeFiles/hardproject.dir/src/Thread.cc.o"
@@ -38,6 +52,6 @@ file(REMOVE_RECURSE
 )
 
 # Per-language clean rules from dependency scanning.
-foreach(lang CXX)
+foreach(lang C CXX)
   include(CMakeFiles/hardproject.dir/cmake_clean_${lang}.cmake OPTIONAL)
 endforeach()

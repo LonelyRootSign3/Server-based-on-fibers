@@ -134,17 +134,27 @@ public:
 
     //----------------------------位置控制接口---------------------------
     /**
-     * @brief 返回ByteArray当前位置
+     * @brief 返回ByteArray当前的读位置
      */
-    size_t getPosition() const { return m_position;}
+    size_t getReadPosition() const { return m_read_position; }
 
     /**
-     * @brief 设置ByteArray当前位置
-     * @post 如果m_position > m_size 则 m_size = m_position
-     * @exception 如果m_position > m_capacity 则抛出 std::out_of_range
+     * @brief 返回ByteArray当前的写位置
      */
-    void setPosition(size_t v);
+    size_t getWritePosition() const { return m_write_position; }
 
+    /**
+     * @brief 设置ByteArray当前的读位置
+     * @exception 如果m_read_position > m_size 则抛出 std::out_of_range
+     */
+    void setReadPosition(size_t v);
+
+    /**
+     * @brief 设置ByteArray当前的写位置
+     * @post 如果m_write_position > m_size 则 m_size = m_write_position
+     * @exception 如果m_write_position > m_capacity 则抛出 std::out_of_range
+     */
+    void setWritePosition(size_t v);
 
     //----------------------------------文件接口--------------------------
 
@@ -168,7 +178,7 @@ public:
     /**
      * @brief 返回可读取数据大小
      */
-    size_t getReadSize() const { return m_size - m_position;}
+    size_t getReadSize() const { return m_size - m_read_position;}
    
     //----------------------------字节序列接口----------------------------
     /**
@@ -227,15 +237,20 @@ private:
     /// 扩容ByteArray,使其可以容纳size个数据(如果原本可以可以容纳,则不扩容)
     void addCapacity(size_t size);
     //获取可用的容量大小
-    size_t getFreeCapacity() { return m_capacity - m_position;}
+    size_t getFreeCapacity() { return m_capacity - m_write_position;}
 private:
     size_t m_base_node_size;/// 内存块的大小
-    size_t m_position;/// 当前操作位置
     size_t m_capacity;/// 当前的总容量
     size_t m_size;/// 当前写入的有效数据的大小
     int8_t m_endian;// 字节序,默认大端
+
     Node* m_root;/// 第一个内存块指针
-    Node* m_cur;// 当前操作的内存块指针
+    Node* m_read_node;///当前读操作的内存块指针
+    Node* m_write_node;///当前写操作的内存块指针
+
+    size_t m_read_position;///当前读操作位置
+    size_t m_write_position;///当前写操作位置
+
 };
 
 

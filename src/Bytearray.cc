@@ -19,7 +19,7 @@ ByteArray::Node::Node()
 ByteArray::Node::Node(size_t s)  
     :size(s)
     ,next(nullptr){
-        ptr = new char[size];
+    ptr = new char[size];
 }
 ByteArray::Node::~Node(){
     if(ptr)
@@ -28,12 +28,14 @@ ByteArray::Node::~Node(){
 
 ByteArray::ByteArray(size_t base_size)
     :m_base_node_size(base_size)
-    ,m_position(0)
+    ,m_read_position(0)
+    ,m_write_position(0)
     ,m_capacity(base_size)
     ,m_size(0)
     ,m_endian(MY_BIG_ENDIAN){
     m_root = new Node(m_base_node_size) ;
-    m_cur = m_root;
+    m_read_node = m_root;
+    m_write_node = m_root;
 } 
 
 ByteArray::~ByteArray(){
@@ -42,14 +44,16 @@ ByteArray::~ByteArray(){
 }
 
 void ByteArray::clear(){
-    m_position = m_size = 0;
+    m_read_position = m_write_position = m_size = 0;
     m_capacity = m_base_node_size;
-    m_cur = m_root;
+    m_read_node = m_root;
+    m_write_node = m_root;
+
     Node* tmp = m_root->next;
     while(tmp){
-        m_cur->next = tmp->next;
+        m_root->next = tmp->next;
         delete tmp;
-        tmp = m_cur->next;
+        tmp = m_root->next;
     }
     m_root->next = nullptr;
 }
@@ -74,7 +78,7 @@ void ByteArray::addCapacity(size_t size){
         m_capacity += m_base_node_size;
     }
 
-    if(free == 0) m_cur = first;//如果之前没有空闲空间,则将当前指针指向第一个新节点
+    if(free == 0) m_write_node = first;//扩容后，如果写节点已经没有剩余空间，指向新分配的第一个节点
 
 
 }
@@ -82,28 +86,28 @@ void ByteArray::addCapacity(size_t size){
 void ByteArray::write(const void* buf, size_t size){
     if(size == 0 || !buf) return;
     addCapacity(size);//懒加载,只有当写入数据时才扩容
-    size_t offset = m_position % m_cur->size;//当前位置在当前节点中的偏移量(第几个字节)
-    size_t leftcap = m_cur->size - offset;//当前节点剩余容量
+    size_t offset = m_write_position % m_write_node->size;//当前位置在当前节点中的偏移量(第几个字节)
+    size_t leftcap = m_write_node->size - offset;//当前节点剩余容量
     size_t src_offset = 0;//源数据的偏移量
     while(size){
         if(leftcap >= size){
-            memcpy(m_cur->ptr + offset, (const char *)buf + src_offset,size);
+            memcpy(m_write_node->ptr + offset, (const char *)buf + src_offset,size);
             if(size == leftcap)
-                m_cur = m_cur->next;
-            m_position += size;
+                m_write_node = m_write_node->next;
+            m_write_position += size;
             break;
         }
         else{
-            memcpy(m_cur->ptr + offset, (const char *)buf + src_offset,leftcap);
-            m_position += leftcap;
+            memcpy(m_write_node->ptr + offset, (const char *)buf + src_offset,leftcap);
+            m_write_position += leftcap;
             src_offset += leftcap;
             size -= leftcap;
             offset = 0;
-            m_cur = m_cur->next;
-            leftcap = m_cur->size;
+            m_write_node = m_write_node->next;
+            leftcap = m_write_node->size;
         }
     }
-    if(m_size < m_position) m_size = m_position;    
+    if(m_size < m_write_position) m_size = m_write_position;    
 
 }
 
@@ -111,25 +115,25 @@ void ByteArray::read(void* buf, size_t size){
     if(size > getReadSize()){
         throw std::out_of_range(" read size out of range");
     }
-    size_t offset = m_position % m_cur->size;//当前位置在当前节点中的偏移量(第几个字节)
-    size_t leftcap = m_cur->size - offset;//当前节点剩余容量
+    size_t offset = m_read_position % m_read_node->size;//当前位置在当前节点中的偏移量(第几个字节)
+    size_t leftcap = m_read_node->size - offset;//当前节点剩余容量
     size_t dest_offset = 0;//读缓冲区的偏移量
     while(size){
         if(leftcap >= size){
-            memcpy((char *)buf + dest_offset,m_cur->ptr + offset,size);
+            memcpy((char *)buf + dest_offset,m_read_node->ptr + offset,size);
             if(size == leftcap)
-                m_cur = m_cur->next;
-            m_position += size;
+                m_read_node = m_read_node->next;
+            m_read_position += size;
             break;
         }
         else{
-            memcpy((char *)buf + dest_offset,m_cur->ptr + offset, leftcap);
-            m_position += leftcap;
+            memcpy((char *)buf + dest_offset,m_read_node->ptr + offset, leftcap);
+            m_read_position += leftcap;
             dest_offset += leftcap;
             size -= leftcap;
             offset = 0;
-            m_cur = m_cur->next;
-            leftcap = m_cur->size;
+            m_read_node = m_read_node->next;
+            leftcap = m_read_node->size;
         }
     }
 }
@@ -137,13 +141,17 @@ void ByteArray::read(void* buf, size_t size, size_t position) const{
     if(size > m_size - position){
         throw std::out_of_range("read size out of range");
     }
-    int cnt1 = ceil(position * 1.0/m_base_node_size);
-    int cnt2 = ceil(m_position * 1.0/m_base_node_size);
+    size_t node_idx = position / m_base_node_size; 
+    size_t cur_node_idx = m_read_position / m_base_node_size;
     Node *tmp;
-    if(cnt1 == cnt2) tmp = m_cur;
-    else{
+    if(node_idx == cur_node_idx) {
+        tmp = m_read_node;
+    } else {
         tmp = m_root;
-        while(cnt1--) tmp = tmp->next;
+        // 如果 node_idx 是 0，循环 0 次；是 1，循环 1 次。完美契合后置递减！
+        while(node_idx--) { 
+            tmp = tmp->next;
+        }
     }
     size_t read_offset = position % tmp->size;//读取位置在当前节点中的偏移量(第几个字节)
     size_t leftcap = tmp->size - read_offset;
@@ -169,21 +177,38 @@ void ByteArray::read(void* buf, size_t size, size_t position) const{
 
 }
 
-void ByteArray::setPosition(size_t v){
+void ByteArray::setReadPosition(size_t v){
+    if(v > m_size) {
+        throw std::out_of_range("setReadPosition out of range");
+    }
+    m_read_position = v;
+
+    m_read_node = m_root;
+    while(v > m_read_node->size) {
+        v -= m_read_node->size;
+        m_read_node = m_read_node->next;
+    }
+    if(v == m_read_node->size) {
+        m_read_node = m_read_node->next;
+    }
+}
+
+void ByteArray::setWritePosition(size_t v){
     if(v > m_capacity) {
-        throw std::out_of_range("set_position out of range");
+        throw std::out_of_range("setWritePosition out of range");
     }
-    m_position = v;
-    if(m_position > m_size) {
-        m_size = m_position;
+    m_write_position = v;
+    if(m_write_position > m_size) {
+        m_size = m_write_position;
     }
-    m_cur = m_root;
-    while(v > m_cur->size) {
-        v -= m_cur->size;
-        m_cur = m_cur->next;
+
+    m_write_node = m_root;
+    while(v > m_write_node->size) {
+        v -= m_write_node->size;
+        m_write_node = m_write_node->next;
     }
-    if(v == m_cur->size) {
-        m_cur = m_cur->next;
+    if(v == m_write_node->size) {
+        m_write_node = m_write_node->next;
     }
 }
 
@@ -391,9 +416,9 @@ bool ByteArray::writeToFile(const std::string& name)const {
             << " error, errno=" << errno << " errstr=" << strerror(errno);
         return false;
     }
-    Node *buf = m_cur;
+    Node *buf = m_read_node;
     int64_t read_size = getReadSize();
-    int64_t offset = m_position % buf->size;//当前结点的偏移
+    int64_t offset = m_read_position % buf->size;//当前结点的偏移
     while(read_size > 0){ 
         int64_t len = read_size > (buf->size - offset) ? (buf->size - offset) : read_size;
         ofs.write((const char*)buf->ptr + offset, len);
@@ -431,7 +456,7 @@ std::string ByteArray::toString() const{
     std::string str;
     str.resize(getReadSize());
     if(str.empty()) return str;
-    read(&str[0], getReadSize(),m_position);
+    read(&str[0], getReadSize(),m_read_position);
     return str;
 }
 
@@ -453,11 +478,11 @@ uint64_t ByteArray::getReadBuffers(std::vector<iovec>& buf, uint64_t len) const{
     len = std::min(len, getReadSize());
     if(len == 0) return 0;
     uint64_t size = len;//用于返回
-    size_t offset = m_position % m_base_node_size;//当前结点的偏移
-    size_t leftcap = m_cur->size - offset;//当前结点的剩余容量
+    size_t offset = m_read_position % m_base_node_size;//当前结点的偏移
+    size_t leftcap = m_read_node->size - offset;//当前结点的剩余容量
 
     struct iovec iov;
-    Node *tmp = m_cur;
+    Node *tmp = m_read_node;
     while(len){
         if(leftcap >= len){
             iov.iov_base = tmp->ptr + offset;
@@ -482,13 +507,18 @@ uint64_t ByteArray::getReadBuffers(std::vector<iovec>& buf, uint64_t len, uint64
     if(len == 0) return 0;
     uint64_t size = len;//用于返回
 
-    int cnt1 = ceil(position * 1.0/m_base_node_size);
-    int cnt2 = ceil(m_position * 1.0/m_base_node_size);
+    size_t node_idx = position / m_base_node_size; 
+    size_t cur_node_idx = m_read_position / m_base_node_size;
+    
     Node *tmp;
-    if(cnt1 == cnt2) tmp = m_cur;
-    else{
+    if(node_idx == cur_node_idx) {
+        tmp = m_read_node;
+    } else {
         tmp = m_root;
-        while(cnt1--) tmp = tmp->next;
+        // 如果 node_idx 是 0，循环 0 次；是 1，循环 1 次。完美契合后置递减！
+        while(node_idx--) { 
+            tmp = tmp->next;
+        }
     }
     size_t offset = position % m_base_node_size;//读取位置在当前节点中的偏移量(第几个字节)
     size_t leftcap = tmp->size - offset;
@@ -516,10 +546,10 @@ uint64_t ByteArray::getWriteBuffers(std::vector<iovec>& buf, uint64_t len){
     if(len == 0) return 0;
     addCapacity(len);//懒加载,只有当写入数据时才扩容
     uint64_t size = len;//用于返回
-    size_t offset = m_position % m_base_node_size;//当前结点的偏移
-    size_t leftcap = m_cur->size - offset;//当前结点的剩余容量
+    size_t offset = m_write_position % m_base_node_size;//当前结点的偏移
+    size_t leftcap = m_write_node->size - offset;//当前结点的剩余容量
     struct iovec iov;
-    Node *tmp = m_cur;
+    Node *tmp = m_write_node;
     while(len){
         if(leftcap >= len){
             iov.iov_base = tmp->ptr + offset;

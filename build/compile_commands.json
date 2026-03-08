@@ -1,110 +1,152 @@
 [
 {
   "directory": "/home/dyx/HardProject/build",
-  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Address.cc.o -c /home/dyx/HardProject/src/Address.cc",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -I/home/dyx/HardProject/src/Http -I/home/dyx/HardProject/src/Stream -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Address.cc.o -c /home/dyx/HardProject/src/Address.cc",
   "file": "/home/dyx/HardProject/src/Address.cc",
   "output": "CMakeFiles/hardproject.dir/src/Address.cc.o"
 },
 {
   "directory": "/home/dyx/HardProject/build",
-  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Bytearray.cc.o -c /home/dyx/HardProject/src/Bytearray.cc",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -I/home/dyx/HardProject/src/Http -I/home/dyx/HardProject/src/Stream -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Bytearray.cc.o -c /home/dyx/HardProject/src/Bytearray.cc",
   "file": "/home/dyx/HardProject/src/Bytearray.cc",
   "output": "CMakeFiles/hardproject.dir/src/Bytearray.cc.o"
 },
 {
   "directory": "/home/dyx/HardProject/build",
-  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Config.cc.o -c /home/dyx/HardProject/src/Config.cc",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -I/home/dyx/HardProject/src/Http -I/home/dyx/HardProject/src/Stream -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Config.cc.o -c /home/dyx/HardProject/src/Config.cc",
   "file": "/home/dyx/HardProject/src/Config.cc",
   "output": "CMakeFiles/hardproject.dir/src/Config.cc.o"
 },
 {
   "directory": "/home/dyx/HardProject/build",
-  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Env.cc.o -c /home/dyx/HardProject/src/Env.cc",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -I/home/dyx/HardProject/src/Http -I/home/dyx/HardProject/src/Stream -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Env.cc.o -c /home/dyx/HardProject/src/Env.cc",
   "file": "/home/dyx/HardProject/src/Env.cc",
   "output": "CMakeFiles/hardproject.dir/src/Env.cc.o"
 },
 {
   "directory": "/home/dyx/HardProject/build",
-  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/FdManager.cc.o -c /home/dyx/HardProject/src/FdManager.cc",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -I/home/dyx/HardProject/src/Http -I/home/dyx/HardProject/src/Stream -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/FdManager.cc.o -c /home/dyx/HardProject/src/FdManager.cc",
   "file": "/home/dyx/HardProject/src/FdManager.cc",
   "output": "CMakeFiles/hardproject.dir/src/FdManager.cc.o"
 },
 {
   "directory": "/home/dyx/HardProject/build",
-  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Fiber1.cc.o -c /home/dyx/HardProject/src/Fiber1.cc",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -I/home/dyx/HardProject/src/Http -I/home/dyx/HardProject/src/Stream -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Fiber1.cc.o -c /home/dyx/HardProject/src/Fiber1.cc",
   "file": "/home/dyx/HardProject/src/Fiber1.cc",
   "output": "CMakeFiles/hardproject.dir/src/Fiber1.cc.o"
 },
 {
   "directory": "/home/dyx/HardProject/build",
-  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Hook.cc.o -c /home/dyx/HardProject/src/Hook.cc",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -I/home/dyx/HardProject/src/Http -I/home/dyx/HardProject/src/Stream -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Hook.cc.o -c /home/dyx/HardProject/src/Hook.cc",
   "file": "/home/dyx/HardProject/src/Hook.cc",
   "output": "CMakeFiles/hardproject.dir/src/Hook.cc.o"
 },
 {
   "directory": "/home/dyx/HardProject/build",
-  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/IOManager.cc.o -c /home/dyx/HardProject/src/IOManager.cc",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -I/home/dyx/HardProject/src/Http -I/home/dyx/HardProject/src/Stream -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Http/Http.cc.o -c /home/dyx/HardProject/src/Http/Http.cc",
+  "file": "/home/dyx/HardProject/src/Http/Http.cc",
+  "output": "CMakeFiles/hardproject.dir/src/Http/Http.cc.o"
+},
+{
+  "directory": "/home/dyx/HardProject/build",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -I/home/dyx/HardProject/src/Http -I/home/dyx/HardProject/src/Stream -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Http/HttpParser.cc.o -c /home/dyx/HardProject/src/Http/HttpParser.cc",
+  "file": "/home/dyx/HardProject/src/Http/HttpParser.cc",
+  "output": "CMakeFiles/hardproject.dir/src/Http/HttpParser.cc.o"
+},
+{
+  "directory": "/home/dyx/HardProject/build",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -I/home/dyx/HardProject/src/Http -I/home/dyx/HardProject/src/Stream -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Http/HttpServer.cc.o -c /home/dyx/HardProject/src/Http/HttpServer.cc",
+  "file": "/home/dyx/HardProject/src/Http/HttpServer.cc",
+  "output": "CMakeFiles/hardproject.dir/src/Http/HttpServer.cc.o"
+},
+{
+  "directory": "/home/dyx/HardProject/build",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -I/home/dyx/HardProject/src/Http -I/home/dyx/HardProject/src/Stream -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Http/HttpSession.cc.o -c /home/dyx/HardProject/src/Http/HttpSession.cc",
+  "file": "/home/dyx/HardProject/src/Http/HttpSession.cc",
+  "output": "CMakeFiles/hardproject.dir/src/Http/HttpSession.cc.o"
+},
+{
+  "directory": "/home/dyx/HardProject/build",
+  "command": "/usr/bin/cc  -I/home/dyx/HardProject/src -I/home/dyx/HardProject/src/Http -I/home/dyx/HardProject/src/Stream -g -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Http/picohttpparser.c.o -c /home/dyx/HardProject/src/Http/picohttpparser.c",
+  "file": "/home/dyx/HardProject/src/Http/picohttpparser.c",
+  "output": "CMakeFiles/hardproject.dir/src/Http/picohttpparser.c.o"
+},
+{
+  "directory": "/home/dyx/HardProject/build",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -I/home/dyx/HardProject/src/Http -I/home/dyx/HardProject/src/Stream -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/IOManager.cc.o -c /home/dyx/HardProject/src/IOManager.cc",
   "file": "/home/dyx/HardProject/src/IOManager.cc",
   "output": "CMakeFiles/hardproject.dir/src/IOManager.cc.o"
 },
 {
   "directory": "/home/dyx/HardProject/build",
-  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Log.cc.o -c /home/dyx/HardProject/src/Log.cc",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -I/home/dyx/HardProject/src/Http -I/home/dyx/HardProject/src/Stream -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Log.cc.o -c /home/dyx/HardProject/src/Log.cc",
   "file": "/home/dyx/HardProject/src/Log.cc",
   "output": "CMakeFiles/hardproject.dir/src/Log.cc.o"
 },
 {
   "directory": "/home/dyx/HardProject/build",
-  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Logdefine.cc.o -c /home/dyx/HardProject/src/Logdefine.cc",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -I/home/dyx/HardProject/src/Http -I/home/dyx/HardProject/src/Stream -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Logdefine.cc.o -c /home/dyx/HardProject/src/Logdefine.cc",
   "file": "/home/dyx/HardProject/src/Logdefine.cc",
   "output": "CMakeFiles/hardproject.dir/src/Logdefine.cc.o"
 },
 {
   "directory": "/home/dyx/HardProject/build",
-  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Mutex.cc.o -c /home/dyx/HardProject/src/Mutex.cc",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -I/home/dyx/HardProject/src/Http -I/home/dyx/HardProject/src/Stream -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Mutex.cc.o -c /home/dyx/HardProject/src/Mutex.cc",
   "file": "/home/dyx/HardProject/src/Mutex.cc",
   "output": "CMakeFiles/hardproject.dir/src/Mutex.cc.o"
 },
 {
   "directory": "/home/dyx/HardProject/build",
-  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Schedule1.cc.o -c /home/dyx/HardProject/src/Schedule1.cc",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -I/home/dyx/HardProject/src/Http -I/home/dyx/HardProject/src/Stream -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Schedule1.cc.o -c /home/dyx/HardProject/src/Schedule1.cc",
   "file": "/home/dyx/HardProject/src/Schedule1.cc",
   "output": "CMakeFiles/hardproject.dir/src/Schedule1.cc.o"
 },
 {
   "directory": "/home/dyx/HardProject/build",
-  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Socket.cc.o -c /home/dyx/HardProject/src/Socket.cc",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -I/home/dyx/HardProject/src/Http -I/home/dyx/HardProject/src/Stream -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Socket.cc.o -c /home/dyx/HardProject/src/Socket.cc",
   "file": "/home/dyx/HardProject/src/Socket.cc",
   "output": "CMakeFiles/hardproject.dir/src/Socket.cc.o"
 },
 {
   "directory": "/home/dyx/HardProject/build",
-  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Tcp_server.cc.o -c /home/dyx/HardProject/src/Tcp_server.cc",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -I/home/dyx/HardProject/src/Http -I/home/dyx/HardProject/src/Stream -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Stream.cc.o -c /home/dyx/HardProject/src/Stream.cc",
+  "file": "/home/dyx/HardProject/src/Stream.cc",
+  "output": "CMakeFiles/hardproject.dir/src/Stream.cc.o"
+},
+{
+  "directory": "/home/dyx/HardProject/build",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -I/home/dyx/HardProject/src/Http -I/home/dyx/HardProject/src/Stream -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Stream/SocketStream.cc.o -c /home/dyx/HardProject/src/Stream/SocketStream.cc",
+  "file": "/home/dyx/HardProject/src/Stream/SocketStream.cc",
+  "output": "CMakeFiles/hardproject.dir/src/Stream/SocketStream.cc.o"
+},
+{
+  "directory": "/home/dyx/HardProject/build",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -I/home/dyx/HardProject/src/Http -I/home/dyx/HardProject/src/Stream -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Tcp_server.cc.o -c /home/dyx/HardProject/src/Tcp_server.cc",
   "file": "/home/dyx/HardProject/src/Tcp_server.cc",
   "output": "CMakeFiles/hardproject.dir/src/Tcp_server.cc.o"
 },
 {
   "directory": "/home/dyx/HardProject/build",
-  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Thread.cc.o -c /home/dyx/HardProject/src/Thread.cc",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -I/home/dyx/HardProject/src/Http -I/home/dyx/HardProject/src/Stream -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Thread.cc.o -c /home/dyx/HardProject/src/Thread.cc",
   "file": "/home/dyx/HardProject/src/Thread.cc",
   "output": "CMakeFiles/hardproject.dir/src/Thread.cc.o"
 },
 {
   "directory": "/home/dyx/HardProject/build",
-  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Timer.cc.o -c /home/dyx/HardProject/src/Timer.cc",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -I/home/dyx/HardProject/src/Http -I/home/dyx/HardProject/src/Stream -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Timer.cc.o -c /home/dyx/HardProject/src/Timer.cc",
   "file": "/home/dyx/HardProject/src/Timer.cc",
   "output": "CMakeFiles/hardproject.dir/src/Timer.cc.o"
 },
 {
   "directory": "/home/dyx/HardProject/build",
-  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Util.cc.o -c /home/dyx/HardProject/src/Util.cc",
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -I/home/dyx/HardProject/src/Http -I/home/dyx/HardProject/src/Stream -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/hardproject.dir/src/Util.cc.o -c /home/dyx/HardProject/src/Util.cc",
   "file": "/home/dyx/HardProject/src/Util.cc",
   "output": "CMakeFiles/hardproject.dir/src/Util.cc.o"
 },
 {
   "directory": "/home/dyx/HardProject/build",
-  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/tcpserver_test.dir/tests/test_Tcpserver.cc.o -c /home/dyx/HardProject/tests/test_Tcpserver.cc",
-  "file": "/home/dyx/HardProject/tests/test_Tcpserver.cc",
-  "output": "CMakeFiles/tcpserver_test.dir/tests/test_Tcpserver.cc.o"
+  "command": "/usr/bin/c++  -I/home/dyx/HardProject/src -I/home/dyx/HardProject/src/Http -I/home/dyx/HardProject/src/Stream -g -std=gnu++17 -fno-omit-frame-pointer -o CMakeFiles/http_server_test.dir/tests/test_HttpServer.cc.o -c /home/dyx/HardProject/tests/test_HttpServer.cc",
+  "file": "/home/dyx/HardProject/tests/test_HttpServer.cc",
+  "output": "CMakeFiles/http_server_test.dir/tests/test_HttpServer.cc.o"
 }
 ]

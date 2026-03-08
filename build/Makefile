@@ -130,17 +130,17 @@ hardproject/fast:
 .PHONY : hardproject/fast
 
 #=============================================================================
-# Target rules for targets named tcpserver_test
+# Target rules for targets named http_server_test
 
 # Build rule for target.
-tcpserver_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tcpserver_test
-.PHONY : tcpserver_test
+http_server_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 http_server_test
+.PHONY : http_server_test
 
 # fast build rule for target.
-tcpserver_test/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcpserver_test.dir/build.make CMakeFiles/tcpserver_test.dir/build
-.PHONY : tcpserver_test/fast
+http_server_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/http_server_test.dir/build.make CMakeFiles/http_server_test.dir/build
+.PHONY : http_server_test/fast
 
 src/Address.o: src/Address.cc.o
 .PHONY : src/Address.o
@@ -310,6 +310,126 @@ src/Hook.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Hook.cc.s
 .PHONY : src/Hook.cc.s
 
+src/Http/Http.o: src/Http/Http.cc.o
+.PHONY : src/Http/Http.o
+
+# target to build an object file
+src/Http/Http.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Http/Http.cc.o
+.PHONY : src/Http/Http.cc.o
+
+src/Http/Http.i: src/Http/Http.cc.i
+.PHONY : src/Http/Http.i
+
+# target to preprocess a source file
+src/Http/Http.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Http/Http.cc.i
+.PHONY : src/Http/Http.cc.i
+
+src/Http/Http.s: src/Http/Http.cc.s
+.PHONY : src/Http/Http.s
+
+# target to generate assembly for a file
+src/Http/Http.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Http/Http.cc.s
+.PHONY : src/Http/Http.cc.s
+
+src/Http/HttpParser.o: src/Http/HttpParser.cc.o
+.PHONY : src/Http/HttpParser.o
+
+# target to build an object file
+src/Http/HttpParser.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Http/HttpParser.cc.o
+.PHONY : src/Http/HttpParser.cc.o
+
+src/Http/HttpParser.i: src/Http/HttpParser.cc.i
+.PHONY : src/Http/HttpParser.i
+
+# target to preprocess a source file
+src/Http/HttpParser.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Http/HttpParser.cc.i
+.PHONY : src/Http/HttpParser.cc.i
+
+src/Http/HttpParser.s: src/Http/HttpParser.cc.s
+.PHONY : src/Http/HttpParser.s
+
+# target to generate assembly for a file
+src/Http/HttpParser.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Http/HttpParser.cc.s
+.PHONY : src/Http/HttpParser.cc.s
+
+src/Http/HttpServer.o: src/Http/HttpServer.cc.o
+.PHONY : src/Http/HttpServer.o
+
+# target to build an object file
+src/Http/HttpServer.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Http/HttpServer.cc.o
+.PHONY : src/Http/HttpServer.cc.o
+
+src/Http/HttpServer.i: src/Http/HttpServer.cc.i
+.PHONY : src/Http/HttpServer.i
+
+# target to preprocess a source file
+src/Http/HttpServer.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Http/HttpServer.cc.i
+.PHONY : src/Http/HttpServer.cc.i
+
+src/Http/HttpServer.s: src/Http/HttpServer.cc.s
+.PHONY : src/Http/HttpServer.s
+
+# target to generate assembly for a file
+src/Http/HttpServer.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Http/HttpServer.cc.s
+.PHONY : src/Http/HttpServer.cc.s
+
+src/Http/HttpSession.o: src/Http/HttpSession.cc.o
+.PHONY : src/Http/HttpSession.o
+
+# target to build an object file
+src/Http/HttpSession.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Http/HttpSession.cc.o
+.PHONY : src/Http/HttpSession.cc.o
+
+src/Http/HttpSession.i: src/Http/HttpSession.cc.i
+.PHONY : src/Http/HttpSession.i
+
+# target to preprocess a source file
+src/Http/HttpSession.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Http/HttpSession.cc.i
+.PHONY : src/Http/HttpSession.cc.i
+
+src/Http/HttpSession.s: src/Http/HttpSession.cc.s
+.PHONY : src/Http/HttpSession.s
+
+# target to generate assembly for a file
+src/Http/HttpSession.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Http/HttpSession.cc.s
+.PHONY : src/Http/HttpSession.cc.s
+
+src/Http/picohttpparser.o: src/Http/picohttpparser.c.o
+.PHONY : src/Http/picohttpparser.o
+
+# target to build an object file
+src/Http/picohttpparser.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Http/picohttpparser.c.o
+.PHONY : src/Http/picohttpparser.c.o
+
+src/Http/picohttpparser.i: src/Http/picohttpparser.c.i
+.PHONY : src/Http/picohttpparser.i
+
+# target to preprocess a source file
+src/Http/picohttpparser.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Http/picohttpparser.c.i
+.PHONY : src/Http/picohttpparser.c.i
+
+src/Http/picohttpparser.s: src/Http/picohttpparser.c.s
+.PHONY : src/Http/picohttpparser.s
+
+# target to generate assembly for a file
+src/Http/picohttpparser.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Http/picohttpparser.c.s
+.PHONY : src/Http/picohttpparser.c.s
+
 src/IOManager.o: src/IOManager.cc.o
 .PHONY : src/IOManager.o
 
@@ -454,6 +574,54 @@ src/Socket.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Socket.cc.s
 .PHONY : src/Socket.cc.s
 
+src/Stream.o: src/Stream.cc.o
+.PHONY : src/Stream.o
+
+# target to build an object file
+src/Stream.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Stream.cc.o
+.PHONY : src/Stream.cc.o
+
+src/Stream.i: src/Stream.cc.i
+.PHONY : src/Stream.i
+
+# target to preprocess a source file
+src/Stream.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Stream.cc.i
+.PHONY : src/Stream.cc.i
+
+src/Stream.s: src/Stream.cc.s
+.PHONY : src/Stream.s
+
+# target to generate assembly for a file
+src/Stream.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Stream.cc.s
+.PHONY : src/Stream.cc.s
+
+src/Stream/SocketStream.o: src/Stream/SocketStream.cc.o
+.PHONY : src/Stream/SocketStream.o
+
+# target to build an object file
+src/Stream/SocketStream.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Stream/SocketStream.cc.o
+.PHONY : src/Stream/SocketStream.cc.o
+
+src/Stream/SocketStream.i: src/Stream/SocketStream.cc.i
+.PHONY : src/Stream/SocketStream.i
+
+# target to preprocess a source file
+src/Stream/SocketStream.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Stream/SocketStream.cc.i
+.PHONY : src/Stream/SocketStream.cc.i
+
+src/Stream/SocketStream.s: src/Stream/SocketStream.cc.s
+.PHONY : src/Stream/SocketStream.s
+
+# target to generate assembly for a file
+src/Stream/SocketStream.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Stream/SocketStream.cc.s
+.PHONY : src/Stream/SocketStream.cc.s
+
 src/Tcp_server.o: src/Tcp_server.cc.o
 .PHONY : src/Tcp_server.o
 
@@ -550,29 +718,29 @@ src/Util.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Util.cc.s
 .PHONY : src/Util.cc.s
 
-tests/test_Tcpserver.o: tests/test_Tcpserver.cc.o
-.PHONY : tests/test_Tcpserver.o
+tests/test_HttpServer.o: tests/test_HttpServer.cc.o
+.PHONY : tests/test_HttpServer.o
 
 # target to build an object file
-tests/test_Tcpserver.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcpserver_test.dir/build.make CMakeFiles/tcpserver_test.dir/tests/test_Tcpserver.cc.o
-.PHONY : tests/test_Tcpserver.cc.o
+tests/test_HttpServer.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/http_server_test.dir/build.make CMakeFiles/http_server_test.dir/tests/test_HttpServer.cc.o
+.PHONY : tests/test_HttpServer.cc.o
 
-tests/test_Tcpserver.i: tests/test_Tcpserver.cc.i
-.PHONY : tests/test_Tcpserver.i
+tests/test_HttpServer.i: tests/test_HttpServer.cc.i
+.PHONY : tests/test_HttpServer.i
 
 # target to preprocess a source file
-tests/test_Tcpserver.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcpserver_test.dir/build.make CMakeFiles/tcpserver_test.dir/tests/test_Tcpserver.cc.i
-.PHONY : tests/test_Tcpserver.cc.i
+tests/test_HttpServer.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/http_server_test.dir/build.make CMakeFiles/http_server_test.dir/tests/test_HttpServer.cc.i
+.PHONY : tests/test_HttpServer.cc.i
 
-tests/test_Tcpserver.s: tests/test_Tcpserver.cc.s
-.PHONY : tests/test_Tcpserver.s
+tests/test_HttpServer.s: tests/test_HttpServer.cc.s
+.PHONY : tests/test_HttpServer.s
 
 # target to generate assembly for a file
-tests/test_Tcpserver.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tcpserver_test.dir/build.make CMakeFiles/tcpserver_test.dir/tests/test_Tcpserver.cc.s
-.PHONY : tests/test_Tcpserver.cc.s
+tests/test_HttpServer.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/http_server_test.dir/build.make CMakeFiles/http_server_test.dir/tests/test_HttpServer.cc.s
+.PHONY : tests/test_HttpServer.cc.s
 
 # Help Target
 help:
@@ -583,7 +751,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... hardproject"
-	@echo "... tcpserver_test"
+	@echo "... http_server_test"
 	@echo "... src/Address.o"
 	@echo "... src/Address.i"
 	@echo "... src/Address.s"
@@ -605,6 +773,21 @@ help:
 	@echo "... src/Hook.o"
 	@echo "... src/Hook.i"
 	@echo "... src/Hook.s"
+	@echo "... src/Http/Http.o"
+	@echo "... src/Http/Http.i"
+	@echo "... src/Http/Http.s"
+	@echo "... src/Http/HttpParser.o"
+	@echo "... src/Http/HttpParser.i"
+	@echo "... src/Http/HttpParser.s"
+	@echo "... src/Http/HttpServer.o"
+	@echo "... src/Http/HttpServer.i"
+	@echo "... src/Http/HttpServer.s"
+	@echo "... src/Http/HttpSession.o"
+	@echo "... src/Http/HttpSession.i"
+	@echo "... src/Http/HttpSession.s"
+	@echo "... src/Http/picohttpparser.o"
+	@echo "... src/Http/picohttpparser.i"
+	@echo "... src/Http/picohttpparser.s"
 	@echo "... src/IOManager.o"
 	@echo "... src/IOManager.i"
 	@echo "... src/IOManager.s"
@@ -623,6 +806,12 @@ help:
 	@echo "... src/Socket.o"
 	@echo "... src/Socket.i"
 	@echo "... src/Socket.s"
+	@echo "... src/Stream.o"
+	@echo "... src/Stream.i"
+	@echo "... src/Stream.s"
+	@echo "... src/Stream/SocketStream.o"
+	@echo "... src/Stream/SocketStream.i"
+	@echo "... src/Stream/SocketStream.s"
 	@echo "... src/Tcp_server.o"
 	@echo "... src/Tcp_server.i"
 	@echo "... src/Tcp_server.s"
@@ -635,9 +824,9 @@ help:
 	@echo "... src/Util.o"
 	@echo "... src/Util.i"
 	@echo "... src/Util.s"
-	@echo "... tests/test_Tcpserver.o"
-	@echo "... tests/test_Tcpserver.i"
-	@echo "... tests/test_Tcpserver.s"
+	@echo "... tests/test_HttpServer.o"
+	@echo "... tests/test_HttpServer.i"
+	@echo "... tests/test_HttpServer.s"
 .PHONY : help
 
 
