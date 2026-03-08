@@ -799,11 +799,8 @@ LogIniter::LogIniter()
     g_log_defines->addChangeCallback(func);//注册回调函数(监听日志配置的变化)
     // std::cout<<"-------------------log init------------------------------"<<std::endl;
 
-
-static LogIniter __log_init;//创建一个全局静态实例，保证程序启动时构造函数被执行，从而提前完成上述监听器的安装，实现日志配置的热更新。
-
-
 }
+static LogIniter __log_init;//创建一个全局静态实例，保证程序启动时构造函数被执行，从而提前完成上述监听器的安装，实现日志配置的热更新。
 
 
 
