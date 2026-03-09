@@ -7,10 +7,33 @@ set(CMAKE_BUILD_TYPE Debug)
 add_compile_options(-fno-omit-frame-pointer)
 add_link_options(-rdynamic)
 
+# ================= 新增：Ragel 自动生成配置 =================
+# 1. 在系统中查找 ragel 命令
+find_program(RAGEL_EXECUTABLE ragel)
+if(NOT RAGEL_EXECUTABLE)
+    message(WARNING "Ragel not found! You won't be able to re-generate uri.cc from uri.rl.")
+else()
+    # 2. 告诉 CMake 如何从 .rl 生成 .cc
+    # 严格使用小写 uri.rl 和 uri.cc，防止 Linux 下找不到文件
+    set(URI_RL_FILE ${CMAKE_SOURCE_DIR}/src/Http/Uri.rl)
+    set(URI_CC_FILE ${CMAKE_SOURCE_DIR}/src/Http/Uri.cc)
+
+    add_custom_command(
+        OUTPUT ${URI_CC_FILE}
+        COMMAND ${RAGEL_EXECUTABLE} -G2 -C ${URI_RL_FILE} -o ${URI_CC_FILE}
+        DEPENDS ${URI_RL_FILE}
+        COMMENT "Compiling Ragel state machine: ${URI_RL_FILE} -> ${URI_CC_FILE}"
+    )
+    
+    # 3. 把生成的 cc 文件放入临时列表
+    list(APPEND EXTRA_SRC ${URI_CC_FILE})
+endif()
+# ==========================================================
 
 # 1) 找到依赖库
 find_package(yaml-cpp REQUIRED)   # 找到 yaml-cpp
 find_package(Threads REQUIRED)   # 找到 pthread
+
 # 2) 收集源码并生成库
 file(GLOB SRC_FILES
   ${CMAKE_SOURCE_DIR}/src/*.cc
@@ -19,13 +42,16 @@ file(GLOB SRC_FILES
   ${CMAKE_SOURCE_DIR}/src/Stream/*.cc
 )
 
+# 【核心修复】：将上方 Ragel 生成的 uri.cc 拼接到源码总列表中！
+list(APPEND SRC_FILES ${EXTRA_SRC})
+
 add_library(hardproject ${SRC_FILES})
 target_include_directories(hardproject
   PUBLIC ${CMAKE_SOURCE_DIR}/src      # 你的项目头文件
   PUBLIC ${CMAKE_SOURCE_DIR}/src/Http
   PUBLIC ${CMAKE_SOURCE_DIR}/src/Stream
-
 )
+
 # 3) 把 yaml-cpp 作为 hardproject 的 PUBLIC 依赖（可执行程序会自动继承）
 target_link_libraries(hardproject PUBLIC 
           yaml-cpp 
@@ -58,7 +84,6 @@ target_link_libraries(hardproject PUBLIC
 # add_executable(hook_test ${CMAKE_SOURCE_DIR}/tests/test_Hook.cc)
 # target_link_libraries(hook_test PRIVATE hardproject)
 
-
 #add_executable(address_test ${CMAKE_SOURCE_DIR}/tests/test_Address.cc)
 #target_link_libraries(address_test PRIVATE hardproject)
 
@@ -80,6 +105,8 @@ target_link_libraries(hardproject PUBLIC
 # add_executable(http_parser_test ${CMAKE_SOURCE_DIR}/tests/test_HttpParser.cc)
 # target_link_libraries(http_parser_test PRIVATE hardproject)
 
-add_executable(http_server_test ${CMAKE_SOURCE_DIR}/tests/test_HttpServer.cc)
-target_link_libraries(http_server_test PRIVATE hardproject)
+# add_executable(http_server_test ${CMAKE_SOURCE_DIR}/tests/test_HttpServer.cc)
+# target_link_libraries(http_server_test PRIVATE hardproject)
 
+add_executable(http_connection_test ${CMAKE_SOURCE_DIR}/tests/test_HttpConnection.cc)
+target_link_libraries(http_connection_test PRIVATE hardproject)

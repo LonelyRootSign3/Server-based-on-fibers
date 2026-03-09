@@ -130,17 +130,17 @@ hardproject/fast:
 .PHONY : hardproject/fast
 
 #=============================================================================
-# Target rules for targets named http_server_test
+# Target rules for targets named http_connection_test
 
 # Build rule for target.
-http_server_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 http_server_test
-.PHONY : http_server_test
+http_connection_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 http_connection_test
+.PHONY : http_connection_test
 
 # fast build rule for target.
-http_server_test/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/http_server_test.dir/build.make CMakeFiles/http_server_test.dir/build
-.PHONY : http_server_test/fast
+http_connection_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/http_connection_test.dir/build.make CMakeFiles/http_connection_test.dir/build
+.PHONY : http_connection_test/fast
 
 src/Address.o: src/Address.cc.o
 .PHONY : src/Address.o
@@ -334,6 +334,30 @@ src/Http/Http.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Http/Http.cc.s
 .PHONY : src/Http/Http.cc.s
 
+src/Http/HttpConnection.o: src/Http/HttpConnection.cc.o
+.PHONY : src/Http/HttpConnection.o
+
+# target to build an object file
+src/Http/HttpConnection.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Http/HttpConnection.cc.o
+.PHONY : src/Http/HttpConnection.cc.o
+
+src/Http/HttpConnection.i: src/Http/HttpConnection.cc.i
+.PHONY : src/Http/HttpConnection.i
+
+# target to preprocess a source file
+src/Http/HttpConnection.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Http/HttpConnection.cc.i
+.PHONY : src/Http/HttpConnection.cc.i
+
+src/Http/HttpConnection.s: src/Http/HttpConnection.cc.s
+.PHONY : src/Http/HttpConnection.s
+
+# target to generate assembly for a file
+src/Http/HttpConnection.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Http/HttpConnection.cc.s
+.PHONY : src/Http/HttpConnection.cc.s
+
 src/Http/HttpParser.o: src/Http/HttpParser.cc.o
 .PHONY : src/Http/HttpParser.o
 
@@ -382,6 +406,30 @@ src/Http/HttpServer.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Http/HttpServer.cc.s
 .PHONY : src/Http/HttpServer.cc.s
 
+src/Http/HttpServlet.o: src/Http/HttpServlet.cc.o
+.PHONY : src/Http/HttpServlet.o
+
+# target to build an object file
+src/Http/HttpServlet.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Http/HttpServlet.cc.o
+.PHONY : src/Http/HttpServlet.cc.o
+
+src/Http/HttpServlet.i: src/Http/HttpServlet.cc.i
+.PHONY : src/Http/HttpServlet.i
+
+# target to preprocess a source file
+src/Http/HttpServlet.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Http/HttpServlet.cc.i
+.PHONY : src/Http/HttpServlet.cc.i
+
+src/Http/HttpServlet.s: src/Http/HttpServlet.cc.s
+.PHONY : src/Http/HttpServlet.s
+
+# target to generate assembly for a file
+src/Http/HttpServlet.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Http/HttpServlet.cc.s
+.PHONY : src/Http/HttpServlet.cc.s
+
 src/Http/HttpSession.o: src/Http/HttpSession.cc.o
 .PHONY : src/Http/HttpSession.o
 
@@ -405,6 +453,30 @@ src/Http/HttpSession.s: src/Http/HttpSession.cc.s
 src/Http/HttpSession.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Http/HttpSession.cc.s
 .PHONY : src/Http/HttpSession.cc.s
+
+src/Http/Uri.o: src/Http/Uri.cc.o
+.PHONY : src/Http/Uri.o
+
+# target to build an object file
+src/Http/Uri.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Http/Uri.cc.o
+.PHONY : src/Http/Uri.cc.o
+
+src/Http/Uri.i: src/Http/Uri.cc.i
+.PHONY : src/Http/Uri.i
+
+# target to preprocess a source file
+src/Http/Uri.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Http/Uri.cc.i
+.PHONY : src/Http/Uri.cc.i
+
+src/Http/Uri.s: src/Http/Uri.cc.s
+.PHONY : src/Http/Uri.s
+
+# target to generate assembly for a file
+src/Http/Uri.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Http/Uri.cc.s
+.PHONY : src/Http/Uri.cc.s
 
 src/Http/picohttpparser.o: src/Http/picohttpparser.c.o
 .PHONY : src/Http/picohttpparser.o
@@ -718,29 +790,29 @@ src/Util.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardproject.dir/build.make CMakeFiles/hardproject.dir/src/Util.cc.s
 .PHONY : src/Util.cc.s
 
-tests/test_HttpServer.o: tests/test_HttpServer.cc.o
-.PHONY : tests/test_HttpServer.o
+tests/test_HttpConnection.o: tests/test_HttpConnection.cc.o
+.PHONY : tests/test_HttpConnection.o
 
 # target to build an object file
-tests/test_HttpServer.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/http_server_test.dir/build.make CMakeFiles/http_server_test.dir/tests/test_HttpServer.cc.o
-.PHONY : tests/test_HttpServer.cc.o
+tests/test_HttpConnection.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/http_connection_test.dir/build.make CMakeFiles/http_connection_test.dir/tests/test_HttpConnection.cc.o
+.PHONY : tests/test_HttpConnection.cc.o
 
-tests/test_HttpServer.i: tests/test_HttpServer.cc.i
-.PHONY : tests/test_HttpServer.i
+tests/test_HttpConnection.i: tests/test_HttpConnection.cc.i
+.PHONY : tests/test_HttpConnection.i
 
 # target to preprocess a source file
-tests/test_HttpServer.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/http_server_test.dir/build.make CMakeFiles/http_server_test.dir/tests/test_HttpServer.cc.i
-.PHONY : tests/test_HttpServer.cc.i
+tests/test_HttpConnection.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/http_connection_test.dir/build.make CMakeFiles/http_connection_test.dir/tests/test_HttpConnection.cc.i
+.PHONY : tests/test_HttpConnection.cc.i
 
-tests/test_HttpServer.s: tests/test_HttpServer.cc.s
-.PHONY : tests/test_HttpServer.s
+tests/test_HttpConnection.s: tests/test_HttpConnection.cc.s
+.PHONY : tests/test_HttpConnection.s
 
 # target to generate assembly for a file
-tests/test_HttpServer.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/http_server_test.dir/build.make CMakeFiles/http_server_test.dir/tests/test_HttpServer.cc.s
-.PHONY : tests/test_HttpServer.cc.s
+tests/test_HttpConnection.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/http_connection_test.dir/build.make CMakeFiles/http_connection_test.dir/tests/test_HttpConnection.cc.s
+.PHONY : tests/test_HttpConnection.cc.s
 
 # Help Target
 help:
@@ -751,7 +823,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... hardproject"
-	@echo "... http_server_test"
+	@echo "... http_connection_test"
 	@echo "... src/Address.o"
 	@echo "... src/Address.i"
 	@echo "... src/Address.s"
@@ -776,15 +848,24 @@ help:
 	@echo "... src/Http/Http.o"
 	@echo "... src/Http/Http.i"
 	@echo "... src/Http/Http.s"
+	@echo "... src/Http/HttpConnection.o"
+	@echo "... src/Http/HttpConnection.i"
+	@echo "... src/Http/HttpConnection.s"
 	@echo "... src/Http/HttpParser.o"
 	@echo "... src/Http/HttpParser.i"
 	@echo "... src/Http/HttpParser.s"
 	@echo "... src/Http/HttpServer.o"
 	@echo "... src/Http/HttpServer.i"
 	@echo "... src/Http/HttpServer.s"
+	@echo "... src/Http/HttpServlet.o"
+	@echo "... src/Http/HttpServlet.i"
+	@echo "... src/Http/HttpServlet.s"
 	@echo "... src/Http/HttpSession.o"
 	@echo "... src/Http/HttpSession.i"
 	@echo "... src/Http/HttpSession.s"
+	@echo "... src/Http/Uri.o"
+	@echo "... src/Http/Uri.i"
+	@echo "... src/Http/Uri.s"
 	@echo "... src/Http/picohttpparser.o"
 	@echo "... src/Http/picohttpparser.i"
 	@echo "... src/Http/picohttpparser.s"
@@ -824,9 +905,9 @@ help:
 	@echo "... src/Util.o"
 	@echo "... src/Util.i"
 	@echo "... src/Util.s"
-	@echo "... tests/test_HttpServer.o"
-	@echo "... tests/test_HttpServer.i"
-	@echo "... tests/test_HttpServer.s"
+	@echo "... tests/test_HttpConnection.o"
+	@echo "... tests/test_HttpConnection.i"
+	@echo "... tests/test_HttpConnection.s"
 .PHONY : help
 
 

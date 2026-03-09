@@ -56,5 +56,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/hardproject.dir/DependInfo.cmake"
-  "CMakeFiles/http_server_test.dir/DependInfo.cmake"
+  "CMakeFiles/http_connection_test.dir/DependInfo.cmake"
   )

@@ -11,7 +11,13 @@ HttpServer::HttpServer(bool keep_alive
             , IOManager* ioWorker
             , IOManager* bussinessWorker)
             :TcpServer(acceptWorker, ioWorker, bussinessWorker)
-            , m_keep_alive(keep_alive){}
+            , m_keep_alive(keep_alive){
+                m_dispatcher = std::make_shared<ServletDispatcher>();
+            }
+void HttpServer::setName(const std::string& v){
+    TcpServer::setName(v);
+    m_dispatcher->setDefault(std::make_shared<NotFoundServlet>(v));    
+}
 
 void HttpServer::handleClient(Socket::Ptr client){
     STREAM_LOG_DEBUG(g_logger)<<" handleClient "<<client->toString();
@@ -26,6 +32,7 @@ void HttpServer::handleClient(Socket::Ptr client){
         }
         HttpResponse::Ptr resp = std::make_shared<HttpResponse>(req->getVersion(), req->isClose() || !m_keep_alive);
         resp->setHeader("dyx", "dyx/0.1");
+        m_dispatcher->handle(req, resp, session);
         session->sendResponse(resp);
         if(req->isClose() || !m_keep_alive) break;//两者只要有一个不是长连接，就break
 

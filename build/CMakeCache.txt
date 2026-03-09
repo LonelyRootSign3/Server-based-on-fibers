@@ -224,6 +224,9 @@ HardProject_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 HardProject_SOURCE_DIR:STATIC=/home/dyx/HardProject
 
+//Path to a program.
+RAGEL_EXECUTABLE:FILEPATH=/usr/bin/ragel
+
 //The directory containing a CMake configuration file for yaml-cpp.
 yaml-cpp_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/yaml-cpp
 

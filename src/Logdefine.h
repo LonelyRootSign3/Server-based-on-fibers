@@ -144,7 +144,7 @@ public:
 };
 
 //先约定一个全局的日志配置项
-extern ConfigVar<std::set<LogDefine>>::Ptr g_log_defines;  // 只声明，不定义
+extern ConfigVar<std::set<LogDefine>>::Ptr g_log_defines;  // 只声明，不定义  
 //不能在头文件定义，每个包含这个头文件的 .cc文件都会各自生成一个独立的全局变量拷贝。\
 //这样做是为了让所有模块共享同一变量
 

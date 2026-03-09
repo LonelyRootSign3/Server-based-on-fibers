@@ -1,6 +1,7 @@
 #pragma once
 #include "../Tcp_server.h"
 #include "HttpSession.h"
+#include "HttpServlet.h"
 namespace DYX{
 
 namespace http{
@@ -13,10 +14,15 @@ public:
             , IOManager* ioWorker = IOManager::GetThis()
             , IOManager* bussinessWorker = IOManager::GetThis());
 
+    void setDispatcher(ServletDispatcher::Ptr dispatcher) { m_dispatcher = dispatcher;}
+    ServletDispatcher::Ptr getDispatcher() { return m_dispatcher;}
+    virtual void setName(const std::string& v) override;
 protected:
     virtual void handleClient(Socket::Ptr client);
 private:
     bool m_keep_alive;
+
+    ServletDispatcher::Ptr m_dispatcher;
 };
 }
 

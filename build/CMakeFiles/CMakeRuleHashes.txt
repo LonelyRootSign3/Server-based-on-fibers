@@ -1,0 +1,2 @@
+# Hashes of file build rules.
+8b7ff8534a43880a5095cd858f917cfc /home/dyx/HardProject/src/Http/Uri.cc
